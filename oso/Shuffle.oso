@@ -1,0 +1,22 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.11.0@OPROJECT_VERSION_RELEASE_TYPE@
+# options: 
+shader Shuffle
+param	color	ColorIn	0 0 0		%read{0,2} %write{2147483647,-1}
+oparam	float	Red	0		%read{2147483647,-1} %write{0,0}
+oparam	float	Green	0		%read{2147483647,-1} %write{1,1}
+oparam	float	Blue	0		%read{2147483647,-1} %write{2,2}
+const	int	$const1	0		%read{0,0} %write{2147483647,-1}
+const	int	$const2	1		%read{1,1} %write{2147483647,-1}
+const	int	$const3	2		%read{2,2} %write{2147483647,-1}
+code ___main___
+# Shuffle.osl:7
+#     Red = ColorIn[0];
+	compref		Red ColorIn $const1 	%filename{"Shuffle.osl"} %line{7} %argrw{"wrr"}
+# Shuffle.osl:8
+#     Green = ColorIn[1];
+	compref		Green ColorIn $const2 	%line{8} %argrw{"wrr"}
+# Shuffle.osl:9
+#     Blue = ColorIn[2];
+	compref		Blue ColorIn $const3 	%line{9} %argrw{"wrr"}
+	end

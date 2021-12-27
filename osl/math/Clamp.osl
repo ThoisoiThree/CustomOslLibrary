@@ -1,0 +1,18 @@
+shader Clamp(
+    color InColor = 0.0,
+
+    float InFloat = 0.0,
+
+    float ClampMin = 0.0,
+    float ClampMax = 1.0,
+
+    output color ClampedColor = 0.0,
+    output float ClampedFloat = 0.0,
+){
+    ClampedColor[0] = clamp(InColor[0], ClampMin, ClampMax);
+    ClampedColor[1] = clamp(InColor[1], ClampMin, ClampMax);
+    ClampedColor[2] = clamp(InColor[2], ClampMin, ClampMax);
+
+    ClampedFloat = clamp(InFloat, ClampMin, ClampMax);
+
+}

@@ -1,0 +1,19 @@
+shader Invert (
+
+    color Color = 0.0,
+    
+    float CFloat = 0,
+
+    float ClampMin = 0,
+    float ClampMax = 1,
+
+    output color InvColor = ("rgb", 0.0, 0.0, 0.0),
+    output float InvCFloat = 1,
+
+) {   
+    InvColor[0] = 1 - clamp(Color[0], ClampMin, ClampMax);
+    InvColor[1] = 1 - clamp(Color[1], ClampMin, ClampMax);
+    InvColor[2] = 1 - clamp(Color[2], ClampMin, ClampMax);
+
+    InvCFloat = 1 - clamp(CFloat, ClampMin, ClampMax);
+}

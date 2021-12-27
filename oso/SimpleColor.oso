@@ -1,0 +1,12 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.12.0
+# options: 
+shader SimpleColor
+param	color	inputColor	1 1 1		%read{0,0} %write{2147483647,-1}
+param	float	Multiply	1		%read{0,0} %write{2147483647,-1}
+oparam	color	outputColor	1 1 1		%read{2147483647,-1} %write{0,0}
+code ___main___
+# SimpleColor.osl:6
+#     outputColor = inputColor * Multiply;
+	mul		outputColor inputColor Multiply 	%filename{"SimpleColor.osl"} %line{6} %argrw{"wrr"}
+	end

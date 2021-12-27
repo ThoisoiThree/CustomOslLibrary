@@ -1,0 +1,10 @@
+shader FloatToColor(
+    float Red = 0.0,
+    float Green = 0.0,
+    float Blue = 0.0,
+    output color ColorOut = color(0,0,0)
+){
+    ColorOut[0] = Red;
+    ColorOut[1] = Green;
+    ColorOut[2] = Blue;
+}

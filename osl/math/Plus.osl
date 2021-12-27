@@ -1,0 +1,14 @@
+shader Plus(
+
+    color InColorOne = 0.0,
+    color InColorTwo = 0.0,
+
+    float InFloatOne = 0.0,
+    float InFloatTwo = 0.0,
+
+    output color ColorRes = color(0.0,0.0,0.0),
+    output float FloatRes = 0.0,
+){
+    ColorRes = InColorOne + InColorTwo;
+    FloatRes = InFloatOne + InFloatTwo;
+}

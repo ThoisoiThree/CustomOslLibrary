@@ -1,0 +1,66 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.11.0@OPROJECT_VERSION_RELEASE_TYPE@
+# options: -O2
+shader Clamp
+param	color	InColor	0 0 0		%read{0,10} %write{2147483647,-1}
+param	float	InFloat	0		%read{16,16} %write{2147483647,-1}
+param	float	ClampMin	0		%read{3,17} %write{2147483647,-1}
+param	float	ClampMax	1		%read{2,16} %write{2147483647,-1}
+oparam	color	ClampedColor	0 0 0		%read{2147483647,-1} %write{4,14}
+oparam	float	ClampedFloat	0		%read{2147483647,-1} %write{17,17}
+temp	float	$tmp1	%read{4,4} %write{3,3}
+const	int	$const1	0		%read{0,4} %write{2147483647,-1}
+temp	float	$tmp2	%read{2,2} %write{0,0}
+const	string	$const2	"clamp"		%read{1,15} %write{2147483647,-1}
+temp	float	$tmp3	%read{3,3} %write{2,2}
+temp	float	$tmp4	%read{9,9} %write{8,8}
+const	int	$const3	1		%read{5,9} %write{2147483647,-1}
+temp	float	$tmp5	%read{7,7} %write{5,5}
+temp	float	$tmp6	%read{8,8} %write{7,7}
+temp	float	$tmp7	%read{14,14} %write{13,13}
+const	int	$const4	2		%read{10,14} %write{2147483647,-1}
+temp	float	$tmp8	%read{12,12} %write{10,10}
+temp	float	$tmp9	%read{13,13} %write{12,12}
+temp	float	$tmp10	%read{17,17} %write{16,16}
+code ___main___
+# Clamp.osl:12
+#     ClampedColor[0] = clamp(InColor[0], ClampMin, ClampMax);
+	compref		$tmp2 InColor $const1 	%filename{"Clamp.osl"} %line{12} %argrw{"wrr"}
+	functioncall	$const2 4 	%argrw{"r"}
+# C:\\\\Program Files\\\\Pixar\\\\RenderManProServer-24.2\\\\lib\\\\osl\\\\include\\\\stdosl.h:163
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp3 $tmp2 ClampMax 	%filename{"C:\\\\Program Files\\\\Pixar\\\\RenderManProServer-24.2\\\\lib\\\\osl\\\\include\\\\stdosl.h"} %line{163} %argrw{"wrr"}
+	max		$tmp1 $tmp3 ClampMin 	%argrw{"wrr"}
+# Clamp.osl:12
+#     ClampedColor[0] = clamp(InColor[0], ClampMin, ClampMax);
+	compassign	ClampedColor $const1 $tmp1 	%filename{"Clamp.osl"} %line{12} %argrw{"wrr"}
+# Clamp.osl:13
+#     ClampedColor[1] = clamp(InColor[1], ClampMin, ClampMax);
+	compref		$tmp5 InColor $const3 	%line{13} %argrw{"wrr"}
+	functioncall	$const2 9 	%argrw{"r"}
+# C:\\\\Program Files\\\\Pixar\\\\RenderManProServer-24.2\\\\lib\\\\osl\\\\include\\\\stdosl.h:163
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp6 $tmp5 ClampMax 	%filename{"C:\\\\Program Files\\\\Pixar\\\\RenderManProServer-24.2\\\\lib\\\\osl\\\\include\\\\stdosl.h"} %line{163} %argrw{"wrr"}
+	max		$tmp4 $tmp6 ClampMin 	%argrw{"wrr"}
+# Clamp.osl:13
+#     ClampedColor[1] = clamp(InColor[1], ClampMin, ClampMax);
+	compassign	ClampedColor $const3 $tmp4 	%filename{"Clamp.osl"} %line{13} %argrw{"wrr"}
+# Clamp.osl:14
+#     ClampedColor[2] = clamp(InColor[2], ClampMin, ClampMax);
+	compref		$tmp8 InColor $const4 	%line{14} %argrw{"wrr"}
+	functioncall	$const2 14 	%argrw{"r"}
+# C:\\\\Program Files\\\\Pixar\\\\RenderManProServer-24.2\\\\lib\\\\osl\\\\include\\\\stdosl.h:163
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp9 $tmp8 ClampMax 	%filename{"C:\\\\Program Files\\\\Pixar\\\\RenderManProServer-24.2\\\\lib\\\\osl\\\\include\\\\stdosl.h"} %line{163} %argrw{"wrr"}
+	max		$tmp7 $tmp9 ClampMin 	%argrw{"wrr"}
+# Clamp.osl:14
+#     ClampedColor[2] = clamp(InColor[2], ClampMin, ClampMax);
+	compassign	ClampedColor $const4 $tmp7 	%filename{"Clamp.osl"} %line{14} %argrw{"wrr"}
+# Clamp.osl:16
+#     ClampedFloat = clamp(InFloat, ClampMin, ClampMax);
+	functioncall	$const2 18 	%line{16} %argrw{"r"}
+# C:\\\\Program Files\\\\Pixar\\\\RenderManProServer-24.2\\\\lib\\\\osl\\\\include\\\\stdosl.h:163
+# float  clamp (float x, float minval, float maxval) { return max(min(x,maxval),minval); }
+	min		$tmp10 InFloat ClampMax 	%filename{"C:\\\\Program Files\\\\Pixar\\\\RenderManProServer-24.2\\\\lib\\\\osl\\\\include\\\\stdosl.h"} %line{163} %argrw{"wrr"}
+	max		ClampedFloat $tmp10 ClampMin 	%argrw{"wrr"}
+	end

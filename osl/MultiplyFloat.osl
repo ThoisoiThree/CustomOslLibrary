@@ -1,0 +1,7 @@
+shader MultiplyFloat (
+    float Input = 1,
+    float MultiplyBy = 1,
+    output float F_multiplied = 1
+) {
+    F_multiplied = Input * MultiplyBy;
+}
