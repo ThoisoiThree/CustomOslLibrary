@@ -1,0 +1,17 @@
+shader Average (
+    color ColorOne = 0,
+    color ColorTwo = 0,
+
+    float FloatOne = 0,
+    float FloatTwo = 0,
+
+    output color ColorAverage = color(0, 0, 0),
+    output float FloatAverage = 0,
+) 
+{
+    ColorAverage[0] = (ColorOne[0]+ColorTwo[0])/2; 
+    ColorAverage[1] = (ColorOne[1]+ColorTwo[1])/2; 
+    ColorAverage[2] = (ColorOne[2]+ColorTwo[2])/2; 
+    
+    FloatAverage = (FloatOne+FloatTwo)/2;
+}

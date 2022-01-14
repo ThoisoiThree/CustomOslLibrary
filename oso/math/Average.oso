@@ -1,0 +1,54 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.11.0@OPROJECT_VERSION_RELEASE_TYPE@
+# options: -O2
+shader Average
+param	color	ColorOne	0 0 0		%read{0,10} %write{2147483647,-1}
+param	color	ColorTwo	0 0 0		%read{1,11} %write{2147483647,-1}
+param	float	FloatOne	0		%read{15,15} %write{2147483647,-1}
+param	float	FloatTwo	0		%read{15,15} %write{2147483647,-1}
+oparam	color	ColorAverage	0 0 0		%read{2147483647,-1} %write{4,14}
+oparam	float	FloatAverage	0		%read{2147483647,-1} %write{16,16}
+const	int	$const1	0		%read{0,4} %write{2147483647,-1}
+temp	float	$tmp1	%read{2,2} %write{0,0}
+temp	float	$tmp2	%read{2,2} %write{1,1}
+temp	float	$tmp3	%read{3,3} %write{2,2}
+const	int	$const2	2		%read{10,14} %write{2147483647,-1}
+temp	float	$tmp4	%read{4,4} %write{3,3}
+const	float	$const3	2		%read{3,16} %write{2147483647,-1}
+const	int	$const4	1		%read{5,9} %write{2147483647,-1}
+temp	float	$tmp5	%read{7,7} %write{5,5}
+temp	float	$tmp6	%read{7,7} %write{6,6}
+temp	float	$tmp7	%read{8,8} %write{7,7}
+temp	float	$tmp8	%read{9,9} %write{8,8}
+temp	float	$tmp9	%read{12,12} %write{10,10}
+temp	float	$tmp10	%read{12,12} %write{11,11}
+temp	float	$tmp11	%read{13,13} %write{12,12}
+temp	float	$tmp12	%read{14,14} %write{13,13}
+temp	float	$tmp13	%read{16,16} %write{15,15}
+code ___main___
+# Average.osl:12
+#     ColorAverage[0] = (ColorOne[0]+ColorTwo[0])/2; 
+	compref		$tmp1 ColorOne $const1 	%filename{"Average.osl"} %line{12} %argrw{"wrr"}
+	compref		$tmp2 ColorTwo $const1 	%argrw{"wrr"}
+	add		$tmp3 $tmp1 $tmp2 	%argrw{"wrr"}
+	div		$tmp4 $tmp3 $const3 	%argrw{"wrr"}
+	compassign	ColorAverage $const1 $tmp4 	%argrw{"wrr"}
+# Average.osl:13
+#     ColorAverage[1] = (ColorOne[1]+ColorTwo[1])/2; 
+	compref		$tmp5 ColorOne $const4 	%line{13} %argrw{"wrr"}
+	compref		$tmp6 ColorTwo $const4 	%argrw{"wrr"}
+	add		$tmp7 $tmp5 $tmp6 	%argrw{"wrr"}
+	div		$tmp8 $tmp7 $const3 	%argrw{"wrr"}
+	compassign	ColorAverage $const4 $tmp8 	%argrw{"wrr"}
+# Average.osl:14
+#     ColorAverage[2] = (ColorOne[2]+ColorTwo[2])/2; 
+	compref		$tmp9 ColorOne $const2 	%line{14} %argrw{"wrr"}
+	compref		$tmp10 ColorTwo $const2 	%argrw{"wrr"}
+	add		$tmp11 $tmp9 $tmp10 	%argrw{"wrr"}
+	div		$tmp12 $tmp11 $const3 	%argrw{"wrr"}
+	compassign	ColorAverage $const2 $tmp12 	%argrw{"wrr"}
+# Average.osl:16
+#     FloatAverage = (FloatOne+FloatTwo)/2;
+	add		$tmp13 FloatOne FloatTwo 	%line{16} %argrw{"wrr"}
+	div		FloatAverage $tmp13 $const3 	%argrw{"wrr"}
+	end
