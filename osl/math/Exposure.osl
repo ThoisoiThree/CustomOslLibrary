@@ -1,0 +1,12 @@
+shader Exposure (
+    color InputColor = 0,
+    float InputFloat = 0,
+    float Stops = 0,
+
+    output color ExpColor = 0,
+    output float ExpFloat = 0,
+) 
+{
+    ExpColor = InputColor * exp2(Stops);
+    ExpFloat = InputFloat * exp2(Stops);
+}

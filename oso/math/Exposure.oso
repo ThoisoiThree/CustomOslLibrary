@@ -1,0 +1,17 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.11.3
+# options: -O2
+shader Exposure
+param	color	InputColor	0 0 0		%read{1,1} %write{2147483647,-1}
+param	float	InputFloat	0		%read{3,3} %write{2147483647,-1}
+param	float	Stops	0		%read{0,2} %write{2147483647,-1}
+oparam	color	ExpColor	0 0 0		%read{2147483647,-1} %write{1,1}
+oparam	float	ExpFloat	0		%read{2147483647,-1} %write{3,3}
+temp	float	$tmp1	%read{1,1} %write{0,0}
+temp	float	$tmp2	%read{3,3} %write{2,2}
+code ___main___
+	exp2		$tmp1 Stops 	%filename{"Exposure.osl"} %line{10} %argrw{"wr"}
+	mul		ExpColor InputColor $tmp1 	%argrw{"wrr"}
+	exp2		$tmp2 Stops 	%line{11} %argrw{"wr"}
+	mul		ExpFloat InputFloat $tmp2 	%argrw{"wrr"}
+	end
