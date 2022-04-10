@@ -1,0 +1,75 @@
+shader UberShader (
+    color BaseColor = color(0.18, 0.18, 0.18)
+        [[
+            string label = "Base Color",
+            string page = "Diffuse"
+        ]],
+    float DiffuseRoughness = 0.0
+        [[
+            string label = "Diffuse Roughness",
+            string page = "Diffuse"
+        ]],
+
+    float SpecularInt = 1.0
+        [[
+            string label = "Specular Intensity",
+            string page = "Specular"
+        ]],
+    float SpecularRough = 0.2
+        [[
+            string label = "Specular Roughness",
+            string page = "Specular"
+        ]],
+    float SpecularIOR = 1.52
+        [[
+            string label = "IOR",
+            string page = "Specular",
+        ]],
+    int GlassOrNot = 0
+        [[
+            string label = "Transmission",
+            string page = "Transmission",
+            string widget = "checkBox",
+        ]],
+
+    float Trough = 0
+        [[
+            string label = "Roughness",
+            string page = "Transmission",
+        ]],
+
+    float Tior = 0
+        [[
+            string label = "IOR",
+            string page = "Transmission",
+        ]],
+
+    output closure color BXDF = holdout(),
+
+) {
+    normal Snormal = normalize(N);
+    ///functions start
+    float getFresnel(normal i_normal, float i_ior){
+        float o_reflect = 0.0;
+        float o_refract = 0.0;
+        
+        fresnel(normalize(I),i_normal,(1 / i_ior),o_reflect,o_refract);
+        return o_reflect;
+    }
+    ///functions end
+
+    float fresnelMult = getFresnel(Snormal,SpecularIOR);
+
+    if (GlassOrNot == 0){
+    BXDF = BaseColor * oren_nayar(normalize(N), DiffuseRoughness)
+    +( microfacet("ggx", N, SpecularRough, SpecularIOR, GlassOrNot))
+    *SpecularInt
+    *fresnelMult;}
+    
+    else{
+    BXDF = microfacet("ggx", N, Trough, Tior, 1)
+    + ( microfacet("ggx", N, SpecularRough, SpecularIOR, 0))*fresnelMult*SpecularInt;
+    }
+
+
+}

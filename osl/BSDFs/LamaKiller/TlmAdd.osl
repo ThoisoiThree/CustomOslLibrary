@@ -1,0 +1,16 @@
+shader TlmAdd(
+    closure color BSDFone = holdout()
+        [[
+            string label = "BSDF one",
+
+        ]],
+    closure color DSDFtwo = holdout()
+        [[
+            string label = "BSDF two",
+            
+        ]],
+
+    output closure color BSDF = holdout(),
+){
+    BSDF = DSDFtwo + BSDFone;
+}

@@ -1,0 +1,175 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.11.3
+# options: 
+shader OrenNayar
+param	color	BaseColor	0.180000007 0.180000007 0.180000007		%meta{string,label,"Base Color"} %meta{string,page,"Diffuse"}  %read{72,72} %write{2147483647,-1}
+param	float	DiffuseRoughness	0		%meta{string,label,"Diffuse Roughness"} %meta{string,page,"Diffuse"}  %read{71,71} %write{2147483647,-1}
+param	float	SpecularInt	1		%meta{string,label,"Specular Intensity"} %meta{string,page,"Specular"}  %read{75,83} %write{2147483647,-1}
+param	float	SpecularRough	0.200000003		%meta{string,label,"Specular Roughness"} %meta{string,page,"Specular"}  %read{74,81} %write{2147483647,-1}
+param	float	SpecularIOR	1.51999998		%meta{string,label,"IOR"} %meta{string,page,"Specular"}  %read{6,81} %write{2147483647,-1}
+param	int	GlassOrNot	0		%meta{string,label,"Transmission"} %meta{string,page,"Transmission"} %meta{string,widget,"checkBox"}  %read{68,74} %write{2147483647,-1}
+param	float	Trough	0		%meta{string,label,"Roughness"} %meta{string,page,"Transmission"}  %read{79,79} %write{2147483647,-1}
+param	float	Tior	0		%meta{string,label,"IOR"} %meta{string,page,"Transmission"}  %read{79,79} %write{2147483647,-1}
+oparam	closure color	BXDF			%read{2147483647,-1} %write{0,84} %initexpr
+global	vector	I	%read{5,5} %write{2147483647,-1}
+global	normal	N	%read{1,81} %write{2147483647,-1}
+local	float	___235_IdotN	%read{50,58} %write{48,48}
+local	float	___235_k	%read{54,59} %write{53,53}
+local	float	___236_c	%read{10,38} %write{9,12}
+local	float	___236_g	%read{24,38} %write{23,26}
+local	float	___238_beta	%read{31,39} %write{27,27}
+local	float	___238_F	%read{35,43} %write{33,42}
+local	vector	___240_R	%read{2147483647,-1} %write{17,17}
+local	vector	___240_T	%read{2147483647,-1} %write{56,66}
+local	normal	Snormal	%read{9,61} %write{1,1}
+local	float	___325_o_reflect	%read{44,67} %write{3,64}
+local	float	___325_o_refract	%read{2147483647,-1} %write{4,65}
+local	float	fresnelMult	%read{76,82} %write{67,67}
+const	string	$const1	"holdout"		%read{0,0} %write{2147483647,-1}
+const	string	$const2	"getFresnel"		%read{2,2} %write{2147483647,-1}
+const	float	$const3	0		%read{3,65} %write{2147483647,-1}
+temp	vector	$tmp1	%read{9,57} %write{5,5}
+const	int	$const4	1		%read{79,79} %write{2147483647,-1}
+temp	float	$tmp2	%read{19,58} %write{6,6}
+const	float	$const5	1		%read{6,64} %write{2147483647,-1}
+const	string	$const6	"fresnel"		%read{7,8} %write{2147483647,-1}
+const	int	$const7	0		%read{10,81} %write{2147483647,-1}
+temp	int	$tmp3	%read{11,11} %write{10,10}
+const	string	$const8	"reflect"		%read{13,13} %write{2147483647,-1}
+temp	float	$tmp4	%read{15,15} %write{14,14}
+temp	float	$tmp5	%read{16,16} %write{15,15}
+const	float	$const10	2		%read{15,15} %write{2147483647,-1}
+temp	vector	$tmp6	%read{17,17} %write{16,16}
+temp	float	$tmp7	%read{20,20} %write{19,19}
+const	string	$const11	"sqr"		%read{18,40} %write{2147483647,-1}
+temp	float	$tmp8	%read{21,21} %write{20,20}
+temp	float	$tmp9	%read{23,23} %write{21,21}
+temp	float	$tmp10	%read{23,23} %write{22,22}
+temp	int	$tmp11	%read{25,25} %write{24,24}
+temp	float	$tmp12	%read{29,29} %write{28,28}
+temp	float	$tmp13	%read{30,30} %write{29,29}
+temp	float	$tmp14	%read{33,33} %write{30,30}
+temp	float	$tmp15	%read{32,32} %write{31,31}
+temp	float	$tmp16	%read{33,33} %write{32,32}
+const	float	$const12	0.5		%read{37,37} %write{2147483647,-1}
+temp	float	$tmp17	%read{36,36} %write{35,35}
+temp	float	$tmp18	%read{37,37} %write{36,36}
+temp	float	$tmp19	%read{42,42} %write{41,41}
+temp	float	$tmp20	%read{39,39} %write{38,38}
+temp	float	$tmp21	%read{41,41} %write{39,39}
+temp	float	$tmp22	%read{45,45} %write{44,44}
+temp	float	$tmp23	%read{46,46} %write{45,45}
+const	string	$const13	"refract"		%read{47,47} %write{2147483647,-1}
+temp	float	$tmp24	%read{52,52} %write{49,49}
+temp	float	$tmp25	%read{51,51} %write{50,50}
+temp	float	$tmp26	%read{52,52} %write{51,51}
+temp	float	$tmp27	%read{53,53} %write{52,52}
+temp	int	$tmp28	%read{55,55} %write{54,54}
+const	vector	$const14	0 0 0		%read{56,81} %write{2147483647,-1}
+temp	vector	$tmp29	%read{62,62} %write{57,57}
+temp	float	$tmp30	%read{60,60} %write{58,58}
+temp	float	$tmp31	%read{60,60} %write{59,59}
+temp	float	$tmp32	%read{61,61} %write{60,60}
+temp	vector	$tmp33	%read{62,62} %write{61,61}
+temp	int	$tmp34	%read{69,69} %write{68,68}
+temp	closure color	$tmp35	%read{72,72} %write{71,71}
+temp	normal	$tmp36	%read{71,71} %write{70,70}
+const	string	$const15	"oren_nayar"		%read{71,71} %write{2147483647,-1}
+temp	closure color	$tmp37	%read{77,77} %write{72,72}
+temp	closure color	$tmp38	%read{75,75} %write{74,74}
+const	string	$const16	"ggx"		%read{74,81} %write{2147483647,-1}
+const	string	$const17	"microfacet"		%read{73,81} %write{2147483647,-1}
+temp	closure color	$tmp40	%read{76,76} %write{75,75}
+temp	closure color	$tmp41	%read{77,77} %write{76,76}
+temp	closure color	$tmp42	%read{84,84} %write{79,79}
+temp	closure color	$tmp44	%read{82,82} %write{81,81}
+temp	closure color	$tmp46	%read{83,83} %write{82,82}
+temp	closure color	$tmp47	%read{84,84} %write{83,83}
+code BXDF
+	closure		BXDF $const1 	%filename{"OrenNayar.osl"} %line{48} %argrw{"wr"}
+code ___main___
+	normalize	Snormal N 	%filename{"OrenNayar.osl"} %line{51} %argrw{"wr"}
+	functioncall	$const2 68 	%line{62} %argrw{"r"}
+	assign		___325_o_reflect $const3 	%line{54} %argrw{"wr"}
+	assign		___325_o_refract $const3 	%line{55} %argrw{"wr"}
+	normalize	$tmp1 I 	%line{57} %argrw{"wr"}
+	div		$tmp2 $const5 SpecularIOR 	%argrw{"wrr"}
+	functioncall	$const6 67 	%argrw{"r"}
+	functioncall	$const6 67 	%filename{"C:\Program Files\3Delight\osl\stdosl.h"} %line{273} %argrw{"r"}
+	dot		___236_c $tmp1 Snormal 	%line{245} %argrw{"wrr"}
+	lt		$tmp3 ___236_c $const7 	%line{246} %argrw{"wrr"}
+	if		$tmp3 13 13 	%argrw{"r"}
+	neg		___236_c ___236_c 	%line{247} %argrw{"wr"}
+	functioncall	$const8 18 	%line{248} %argrw{"r"}
+	dot		$tmp4 Snormal $tmp1 	%line{234} %argrw{"wrr"}
+	mul		$tmp5 $const10 $tmp4 	%argrw{"wrr"}
+	mul		$tmp6 $tmp5 Snormal 	%argrw{"wrr"}
+	sub		___240_R $tmp1 $tmp6 	%argrw{"wrr"}
+	functioncall	$const11 20 	%line{249} %argrw{"r"}
+	mul		$tmp7 $tmp2 $tmp2 	%line{244} %argrw{"wrr"}
+	div		$tmp8 $const5 $tmp7 	%line{249} %argrw{"wrr"}
+	sub		$tmp9 $tmp8 $const5 	%argrw{"wrr"}
+	mul		$tmp10 ___236_c ___236_c 	%argrw{"wrr"}
+	add		___236_g $tmp9 $tmp10 	%argrw{"wrr"}
+	ge		$tmp11 ___236_g $const3 	%line{250} %argrw{"wrr"}
+	if		$tmp11 64 67 	%argrw{"r"}
+	sqrt		___236_g ___236_g 	%line{251} %argrw{"wr"}
+	sub		___238_beta ___236_g ___236_c 	%line{252} %argrw{"wrr"}
+	add		$tmp12 ___236_g ___236_c 	%line{253} %argrw{"wrr"}
+	mul		$tmp13 ___236_c $tmp12 	%argrw{"wrr"}
+	sub		$tmp14 $tmp13 $const5 	%argrw{"wrr"}
+	mul		$tmp15 ___236_c ___238_beta 	%argrw{"wrr"}
+	add		$tmp16 $tmp15 $const5 	%argrw{"wrr"}
+	div		___238_F $tmp14 $tmp16 	%argrw{"wrr"}
+	functioncall	$const11 36 	%line{254} %argrw{"r"}
+	mul		$tmp17 ___238_F ___238_F 	%line{244} %argrw{"wrr"}
+	add		$tmp18 $const5 $tmp17 	%line{254} %argrw{"wrr"}
+	mul		___238_F $const12 $tmp18 	%argrw{"wrr"}
+	add		$tmp20 ___236_g ___236_c 	%line{255} %argrw{"wrr"}
+	div		$tmp21 ___238_beta $tmp20 	%argrw{"wrr"}
+	functioncall	$const11 42 	%argrw{"r"}
+	mul		$tmp19 $tmp21 $tmp21 	%line{244} %argrw{"wrr"}
+	mul		___238_F ___238_F $tmp19 	%line{255} %argrw{"wrr"}
+	assign		___325_o_reflect ___238_F 	%line{256} %argrw{"wr"}
+	sub		$tmp22 $const5 ___325_o_reflect 	%line{257} %argrw{"wrr"}
+	mul		$tmp23 $tmp22 $tmp2 	%argrw{"wrr"}
+	mul		___325_o_refract $tmp23 $tmp2 	%argrw{"wrr"}
+	functioncall	$const13 64 	%line{260} %argrw{"r"}
+	dot		___235_IdotN $tmp1 Snormal 	%line{236} %argrw{"wrr"}
+	mul		$tmp24 $tmp2 $tmp2 	%line{237} %argrw{"wrr"}
+	mul		$tmp25 ___235_IdotN ___235_IdotN 	%argrw{"wrr"}
+	sub		$tmp26 $const5 $tmp25 	%argrw{"wrr"}
+	mul		$tmp27 $tmp24 $tmp26 	%argrw{"wrr"}
+	sub		___235_k $const5 $tmp27 	%argrw{"wrr"}
+	lt		$tmp28 ___235_k $const7 	%line{238} %argrw{"wrr"}
+	if		$tmp28 57 63 	%argrw{"r"}
+	assign		___240_T $const14 	%argrw{"wr"}
+	mul		$tmp29 $tmp2 $tmp1 	%argrw{"wrr"}
+	mul		$tmp30 $tmp2 ___235_IdotN 	%argrw{"wrr"}
+	sqrt		$tmp31 ___235_k 	%argrw{"wr"}
+	add		$tmp32 $tmp30 $tmp31 	%argrw{"wrr"}
+	mul		$tmp33 Snormal $tmp32 	%argrw{"wrr"}
+	sub		___240_T $tmp29 $tmp33 	%argrw{"wrr"}
+	return
+	assign		___325_o_reflect $const5 	%line{263} %argrw{"wr"}
+	assign		___325_o_refract $const3 	%line{264} %argrw{"wr"}
+	assign		___240_T $const14 	%line{265} %argrw{"wr"}
+	assign		fresnelMult ___325_o_reflect 	%filename{"OrenNayar.osl"} %line{58} %argrw{"wr"}
+	eq		$tmp34 GlassOrNot $const7 	%line{64} %argrw{"wrr"}
+	if		$tmp34 78 85 	%argrw{"r"}
+	normalize	$tmp36 N 	%line{65} %argrw{"wr"}
+	closure		$tmp35 $const15 $tmp36 DiffuseRoughness 	%argrw{"wrrr"}
+	mul		$tmp37 $tmp35 BaseColor 	%argrw{"wrr"}
+	functioncall	$const17 75 	%line{66} %argrw{"r"}
+	closure		$tmp38 $const17 $const16 N $const14 SpecularRough SpecularRough SpecularIOR GlassOrNot 	%filename{"C:\Program Files\3Delight\osl\stdosl.h"} %line{485} %argrw{"wrrrrrrrr"}
+	mul		$tmp40 $tmp38 SpecularInt 	%filename{"OrenNayar.osl"} %line{67} %argrw{"wrr"}
+	mul		$tmp41 $tmp40 fresnelMult 	%line{68} %argrw{"wrr"}
+	add		BXDF $tmp37 $tmp41 	%line{66} %argrw{"wrr"}
+	functioncall	$const17 80 	%line{71} %argrw{"r"}
+	closure		$tmp42 $const17 $const16 N $const14 Trough Trough Tior $const4 	%filename{"C:\Program Files\3Delight\osl\stdosl.h"} %line{485} %argrw{"wrrrrrrrr"}
+	functioncall	$const17 82 	%filename{"OrenNayar.osl"} %line{72} %argrw{"r"}
+	closure		$tmp44 $const17 $const16 N $const14 SpecularRough SpecularRough SpecularIOR $const7 	%filename{"C:\Program Files\3Delight\osl\stdosl.h"} %line{485} %argrw{"wrrrrrrrr"}
+	mul		$tmp46 $tmp44 fresnelMult 	%filename{"OrenNayar.osl"} %line{72} %argrw{"wrr"}
+	mul		$tmp47 $tmp46 SpecularInt 	%argrw{"wrr"}
+	add		BXDF $tmp42 $tmp47 	%argrw{"wrr"}
+	end

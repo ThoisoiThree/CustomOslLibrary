@@ -1,0 +1,16 @@
+shader TlmDiffuse(
+    color BColor = 0.18
+        [[
+            string label = "Base",
+
+        ]],
+    float BRough = 0.5
+        [[
+            string label = "Roughness",
+            
+        ]],
+
+    output closure color BSDF = holdout(),
+){
+    BSDF = oren_nayar(normalize(N),BRough)*BColor;
+}

@@ -1,0 +1,19 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.11.3
+# options: 
+shader TlmDiffuse
+param	color	BColor	0.180000007 0.180000007 0.180000007		%meta{string,label,"Base"}  %read{3,3} %write{2147483647,-1}
+param	float	BRough	0.5		%meta{string,label,"Roughness"}  %read{2,2} %write{2147483647,-1}
+oparam	closure color	BSDF			%read{2147483647,-1} %write{0,3} %initexpr
+global	normal	N	%read{1,1} %write{2147483647,-1}
+const	string	$const1	"holdout"		%read{0,0} %write{2147483647,-1}
+temp	closure color	$tmp1	%read{3,3} %write{2,2}
+temp	normal	$tmp2	%read{2,2} %write{1,1}
+const	string	$const2	"oren_nayar"		%read{2,2} %write{2147483647,-1}
+code BSDF
+	closure		BSDF $const1 	%filename{"Diffuse.osl"} %line{13} %argrw{"wr"}
+code ___main___
+	normalize	$tmp2 N 	%filename{"Diffuse.osl"} %line{15} %argrw{"wr"}
+	closure		$tmp1 $const2 $tmp2 BRough 	%argrw{"wrrr"}
+	mul		BSDF $tmp1 BColor 	%argrw{"wrr"}
+	end

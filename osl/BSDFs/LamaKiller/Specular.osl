@@ -1,0 +1,31 @@
+#include "3delightosl.h"
+#include "C:\CustomOslLibrary\utils\Utility.h"
+
+shader TlmSpecular(
+    float SInt = 1
+        [[
+            string label = "Specular Intensity",
+            
+        ]],
+    color Spec = 1
+        [[
+            string label = "Specular Color",
+
+        ]],
+    float SRough = 0.0
+        [[
+            string label = "Roughness",
+            
+        ]],
+    float ior = 1.52
+        [[
+            string label = "IOR",
+            
+        ]],
+
+    output closure color BSDF = holdout(),
+){
+    float SFren = getFresnel(normalize(N),ior);
+
+    BSDF = ( microfacet("ggx", N, SRough, ior, 0))*SFren*SInt*Spec;
+}

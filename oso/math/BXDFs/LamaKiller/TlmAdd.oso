@@ -1,0 +1,17 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.11.3
+# options: 
+shader TlmAdd
+param	closure color	BSDFone			%meta{string,label,"BSDF one"}  %read{3,3} %write{0,0} %initexpr
+param	closure color	DSDFtwo			%meta{string,label,"BSDF two"}  %read{3,3} %write{1,1} %initexpr
+oparam	closure color	BSDF			%read{2147483647,-1} %write{2,3} %initexpr
+const	string	$const1	"holdout"		%read{0,2} %write{2147483647,-1}
+code BSDFone
+	closure		BSDFone $const1 	%filename{"TlmAdd.osl"} %line{3} %argrw{"wr"}
+code DSDFtwo
+	closure		DSDFtwo $const1 	%filename{"TlmAdd.osl"} %line{8} %argrw{"wr"}
+code BSDF
+	closure		BSDF $const1 	%filename{"TlmAdd.osl"} %line{14} %argrw{"wr"}
+code ___main___
+	add		BSDF DSDFtwo BSDFone 	%filename{"TlmAdd.osl"} %line{16} %argrw{"wrr"}
+	end
