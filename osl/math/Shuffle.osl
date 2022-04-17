@@ -1,10 +1,10 @@
 shader Shuffle(
-    color ColorIn = color(0,0,0),
+    color Color = color(0,0,0),
     output float Red = 0.0,
     output float Green = 0.0,
     output float Blue = 0.0,
 ){
-    Red = ColorIn[0];
-    Green = ColorIn[1];
-    Blue = ColorIn[2];
+    Red = Color[0];
+    Green = Color[1];
+    Blue = Color[2];
 }

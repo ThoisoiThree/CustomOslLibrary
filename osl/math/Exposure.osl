@@ -1,12 +1,18 @@
 shader Exposure (
-    color InputColor = 0,
-    float InputFloat = 0,
+    color Icol = 0
+    [[
+        string label = "Color"
+    ]],
+    float ifl = 0
+    [[
+        string label = "Float"
+    ]],
     float Stops = 0,
 
-    output color ExpColor = 0,
-    output float ExpFloat = 0,
+    output color Color = 0,
+    output float Float = 0,
 ) 
 {
-    ExpColor = InputColor * exp2(Stops);
-    ExpFloat = InputFloat * exp2(Stops);
+    Color = Icol * exp2(Stops);
+    Float = ifl * exp2(Stops);
 }

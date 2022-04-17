@@ -1,18 +1,36 @@
 shader Clamp(
-    color InColor = 0.0,
+    color InC = 0.0
+    [[
+        string label = "Color"
+    ]],
 
-    float InFloat = 0.0,
+    float InF = 0.0
+    [[
+        string label = "Float"
+    ]],
 
-    float ClampMin = 0.0,
-    float ClampMax = 1.0,
+    float Cmin = 0.0
+    [[
+        string label = "Min limit"
+    ]],
+    float Cmax = 1.0
+    [[
+        string label = "Max limit"
+    ]],
 
-    output color ClampedColor = 0.0,
-    output float ClampedFloat = 0.0,
+    output color Clcolor = 0.0
+    [[
+        string label = "Clamped color"
+    ]],
+    output float Clfloat = 0.0
+    [[
+        string label = "Clamped float"
+    ]],
 ){
-    ClampedColor[0] = clamp(InColor[0], ClampMin, ClampMax);
-    ClampedColor[1] = clamp(InColor[1], ClampMin, ClampMax);
-    ClampedColor[2] = clamp(InColor[2], ClampMin, ClampMax);
+    Clcolor[0] = clamp(InC[0], Cmin, Cmax);
+    Clcolor[1] = clamp(InC[1], Cmin, Cmax);
+    Clcolor[2] = clamp(InC[2], Cmin, Cmax);
 
-    ClampedFloat = clamp(InFloat, ClampMin, ClampMax);
+    Clfloat = clamp(InF, Cmin, Cmax);
 
 }

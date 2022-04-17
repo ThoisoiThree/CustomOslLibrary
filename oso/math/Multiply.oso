@@ -1,23 +1,17 @@
 OpenShadingLanguage 1.00
-# Compiled by oslc 1.11.0@OPROJECT_VERSION_RELEASE_TYPE@
+# Compiled by oslc 1.11.3
 # options: 
 shader Multiply
-param	color	InColorOne	0 0 0		%read{0,2} %write{2147483647,-1}
-param	color	InColorTwo	0 0 0		%read{0,0} %write{2147483647,-1}
-param	float	InFloatOne	0		%read{1,1} %write{2147483647,-1}
-param	float	InFloatTwo	0		%read{1,1} %write{2147483647,-1}
-param	float	InFloatColor	0		%read{2,2} %write{2147483647,-1}
-oparam	color	ColorRes	0 0 0		%read{2147483647,-1} %write{0,0}
-oparam	float	FloatRes	0		%read{2147483647,-1} %write{1,1}
-oparam	color	ColorFloatRes	0 0 0		%read{2147483647,-1} %write{2,2}
+param	color	i_c_one	0 0 0		%meta{string,label,"Color one"}  %read{0,2} %write{2147483647,-1}
+param	color	i_c_two	0 0 0		%meta{string,label,"Color two"}  %read{0,0} %write{2147483647,-1}
+param	float	i_f_one	0		%meta{string,label,"Float one"}  %read{1,1} %write{2147483647,-1}
+param	float	i_f_two	0		%meta{string,label,"Float two"}  %read{1,1} %write{2147483647,-1}
+param	float	i_f_col	0		%meta{string,label,"Float"}  %read{2,2} %write{2147483647,-1}
+oparam	color	Color	0 0 0		%read{2147483647,-1} %write{0,0}
+oparam	float	Float	0		%read{2147483647,-1} %write{1,1}
+oparam	color	ColF	0 0 0		%meta{string,label,"Color Float"}  %read{2147483647,-1} %write{2,2}
 code ___main___
-# C:\\CustomOsl\\osl\\math\\Multiply.osl:15
-#     FloatRes = InFloatOne*InFloatTwo;
-	mul		ColorRes InColorOne InColorTwo 	%filename{"C:\\CustomOsl\\osl\\math\\Multiply.osl"} %line{15} %argrw{"wrr"}
-# C:\\CustomOsl\\osl\\math\\Multiply.osl:16
-#     ColorFloatRes = InColorOne*InFloatColor;
-	mul		FloatRes InFloatOne InFloatTwo 	%line{16} %argrw{"wrr"}
-# C:\\CustomOsl\\osl\\math\\Multiply.osl:17
-#     
-	mul		ColorFloatRes InColorOne InFloatColor 	%line{17} %argrw{"wrr"}
+	mul		Color i_c_one i_c_two 	%filename{"Multiply.osl"} %line{32} %argrw{"wrr"}
+	mul		Float i_f_one i_f_two 	%line{33} %argrw{"wrr"}
+	mul		ColF i_c_one i_f_col 	%line{34} %argrw{"wrr"}
 	end
