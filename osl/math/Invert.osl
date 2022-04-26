@@ -1,4 +1,4 @@
-shader Invert (
+shader TS_Invert (
 
     color Color = 0.0,
     

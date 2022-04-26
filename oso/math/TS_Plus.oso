@@ -1,7 +1,7 @@
 OpenShadingLanguage 1.00
-# Compiled by oslc 1.11.0@OPROJECT_VERSION_RELEASE_TYPE@
-# options: 
-shader Plus
+# Compiled by oslc 1.11.3
+# options: -O2
+shader TS_Plus
 param	color	InColorOne	0 0 0		%read{0,0} %write{2147483647,-1}
 param	color	InColorTwo	0 0 0		%read{0,0} %write{2147483647,-1}
 param	float	InFloatOne	0		%read{1,1} %write{2147483647,-1}
@@ -9,10 +9,6 @@ param	float	InFloatTwo	0		%read{1,1} %write{2147483647,-1}
 oparam	color	ColorRes	0 0 0		%read{2147483647,-1} %write{0,0}
 oparam	float	FloatRes	0		%read{2147483647,-1} %write{1,1}
 code ___main___
-# C:\\CustomOsl\\osl\\math\\Plus.osl:13
-#     FloatRes = InFloatOne + InFloatTwo;
-	add		ColorRes InColorOne InColorTwo 	%filename{"C:\\CustomOsl\\osl\\math\\Plus.osl"} %line{13} %argrw{"wrr"}
-# C:\\CustomOsl\\osl\\math\\Plus.osl:14
-# }
+	add		ColorRes InColorOne InColorTwo 	%filename{"Plus.osl"} %line{13} %argrw{"wrr"}
 	add		FloatRes InFloatOne InFloatTwo 	%line{14} %argrw{"wrr"}
 	end

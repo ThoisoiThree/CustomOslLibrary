@@ -1,4 +1,4 @@
-shader Multiply(
+shader TS_Multiply(
 
     color i_c_one = 0.0
     [[

@@ -1,4 +1,4 @@
-shader FloatToColor(
+shader TS_FloatToColor(
     float Red = 0.0,
     float Green = 0.0,
     float Blue = 0.0,

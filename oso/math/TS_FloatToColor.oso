@@ -1,7 +1,7 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.11.3
-# options: 
-shader FloatToColor
+# options: -O2
+shader TS_FloatToColor
 param	float	Red	0		%read{0,0} %write{2147483647,-1}
 param	float	Green	0		%read{1,1} %write{2147483647,-1}
 param	float	Blue	0		%read{2,2} %write{2147483647,-1}
@@ -10,7 +10,7 @@ const	int	$const1	0		%read{0,0} %write{2147483647,-1}
 const	int	$const2	1		%read{1,1} %write{2147483647,-1}
 const	int	$const3	2		%read{2,2} %write{2147483647,-1}
 code ___main___
-	compassign	Color $const1 Red 	%filename{"FloatToColor.osl"} %line{7} %argrw{"wrr"}
-	compassign	Color $const2 Green 	%line{8} %argrw{"wrr"}
-	compassign	Color $const3 Blue 	%line{9} %argrw{"wrr"}
+	compassign	Color $const1 Red 	%filename{"FloatToColor.osl"} %line{8} %argrw{"wrr"}
+	compassign	Color $const2 Green 	%line{9} %argrw{"wrr"}
+	compassign	Color $const3 Blue 	%line{10} %argrw{"wrr"}
 	end

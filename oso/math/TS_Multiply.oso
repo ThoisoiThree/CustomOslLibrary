@@ -1,7 +1,7 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.11.3
-# options: 
-shader Multiply
+# options: -O2
+shader TS_Multiply
 param	color	i_c_one	0 0 0		%meta{string,label,"Color one"}  %read{0,2} %write{2147483647,-1}
 param	color	i_c_two	0 0 0		%meta{string,label,"Color two"}  %read{0,0} %write{2147483647,-1}
 param	float	i_f_one	0		%meta{string,label,"Float one"}  %read{1,1} %write{2147483647,-1}
@@ -11,7 +11,7 @@ oparam	color	Color	0 0 0		%read{2147483647,-1} %write{0,0}
 oparam	float	Float	0		%read{2147483647,-1} %write{1,1}
 oparam	color	ColF	0 0 0		%meta{string,label,"Color Float"}  %read{2147483647,-1} %write{2,2}
 code ___main___
-	mul		Color i_c_one i_c_two 	%filename{"Multiply.osl"} %line{32} %argrw{"wrr"}
-	mul		Float i_f_one i_f_two 	%line{33} %argrw{"wrr"}
-	mul		ColF i_c_one i_f_col 	%line{34} %argrw{"wrr"}
+	mul		Color i_c_one i_c_two 	%filename{"Multiply.osl"} %line{33} %argrw{"wrr"}
+	mul		Float i_f_one i_f_two 	%line{34} %argrw{"wrr"}
+	mul		ColF i_c_one i_f_col 	%line{35} %argrw{"wrr"}
 	end

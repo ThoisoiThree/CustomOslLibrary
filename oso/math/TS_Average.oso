@@ -1,7 +1,7 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.11.3
-# options: 
-shader Average
+# options: -O2
+shader TS_Average
 param	color	c_one	0 0 0		%meta{string,label,"Color one"}  %read{0,10} %write{2147483647,-1}
 param	color	c_two	0 0 0		%meta{string,label,"Color two"}  %read{1,11} %write{2147483647,-1}
 param	float	f_one	0		%meta{string,label,"Float one"}  %read{15,15} %write{2147483647,-1}

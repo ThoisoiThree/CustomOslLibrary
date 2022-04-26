@@ -1,7 +1,7 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.11.3
-# options: 
-shader Clamp
+# options: -O2
+shader TS_Clamp
 param	color	InC	0 0 0		%meta{string,label,"Color"}  %read{0,10} %write{2147483647,-1}
 param	float	InF	0		%meta{string,label,"Float"}  %read{16,16} %write{2147483647,-1}
 param	float	Cmin	0		%meta{string,label,"Min limit"}  %read{3,17} %write{2147483647,-1}
@@ -23,22 +23,22 @@ temp	float	$tmp8	%read{12,12} %write{10,10}
 temp	float	$tmp9	%read{13,13} %write{12,12}
 temp	float	$tmp10	%read{17,17} %write{16,16}
 code ___main___
-	compref		$tmp2 InC $const1 	%filename{"Clamp.osl"} %line{30} %argrw{"wrr"}
+	compref		$tmp2 InC $const1 	%filename{"Clamp.osl"} %line{31} %argrw{"wrr"}
 	functioncall	$const2 4 	%argrw{"r"}
 	min		$tmp3 $tmp2 Cmax 	%filename{"C:\Program Files\3Delight\osl\stdosl.h"} %line{163} %argrw{"wrr"}
 	max		$tmp1 $tmp3 Cmin 	%argrw{"wrr"}
-	compassign	Clcolor $const1 $tmp1 	%filename{"Clamp.osl"} %line{30} %argrw{"wrr"}
-	compref		$tmp5 InC $const3 	%line{31} %argrw{"wrr"}
+	compassign	Clcolor $const1 $tmp1 	%filename{"Clamp.osl"} %line{31} %argrw{"wrr"}
+	compref		$tmp5 InC $const3 	%line{32} %argrw{"wrr"}
 	functioncall	$const2 9 	%argrw{"r"}
 	min		$tmp6 $tmp5 Cmax 	%filename{"C:\Program Files\3Delight\osl\stdosl.h"} %line{163} %argrw{"wrr"}
 	max		$tmp4 $tmp6 Cmin 	%argrw{"wrr"}
-	compassign	Clcolor $const3 $tmp4 	%filename{"Clamp.osl"} %line{31} %argrw{"wrr"}
-	compref		$tmp8 InC $const4 	%line{32} %argrw{"wrr"}
+	compassign	Clcolor $const3 $tmp4 	%filename{"Clamp.osl"} %line{32} %argrw{"wrr"}
+	compref		$tmp8 InC $const4 	%line{33} %argrw{"wrr"}
 	functioncall	$const2 14 	%argrw{"r"}
 	min		$tmp9 $tmp8 Cmax 	%filename{"C:\Program Files\3Delight\osl\stdosl.h"} %line{163} %argrw{"wrr"}
 	max		$tmp7 $tmp9 Cmin 	%argrw{"wrr"}
-	compassign	Clcolor $const4 $tmp7 	%filename{"Clamp.osl"} %line{32} %argrw{"wrr"}
-	functioncall	$const2 18 	%line{34} %argrw{"r"}
+	compassign	Clcolor $const4 $tmp7 	%filename{"Clamp.osl"} %line{33} %argrw{"wrr"}
+	functioncall	$const2 18 	%line{35} %argrw{"r"}
 	min		$tmp10 InF Cmax 	%filename{"C:\Program Files\3Delight\osl\stdosl.h"} %line{163} %argrw{"wrr"}
 	max		Clfloat $tmp10 Cmin 	%argrw{"wrr"}
 	end

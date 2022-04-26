@@ -1,4 +1,4 @@
-shader SimpleColor (
+shader TS_SimpleColor (
     color inputColor = 1,
     float Multiply = 1,
     output color outputColor = 1

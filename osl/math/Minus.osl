@@ -1,4 +1,4 @@
-shader Minus(
+shader TS_Minus(
 
     color InColorOne = 0.0,
     color InColorTwo = 0.0,

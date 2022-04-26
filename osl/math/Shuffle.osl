@@ -1,4 +1,4 @@
-shader Shuffle(
+shader TS_Shuffle(
     color Color = color(0,0,0),
     output float Red = 0.0,
     output float Green = 0.0,

@@ -1,4 +1,4 @@
-shader Average (
+shader TS_Average (
     color c_one = 0
     [[
         string label = "Color one"

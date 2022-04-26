@@ -1,4 +1,4 @@
-shader Blackbody (
+shader TS_Blackbody (
     float Temperature = 5500,
     float Multiply = 1,
     output color OutColor = 0,

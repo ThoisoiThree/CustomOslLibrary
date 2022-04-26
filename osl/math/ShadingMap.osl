@@ -1,0 +1,18 @@
+shader ShadingMap(
+    string MapPath = ""
+    [[
+        string help = "R —> Roughness G —> Metalness B —> Bump",
+        string widget = "filename"
+    ]],
+    float S = 0,
+    float T = 0,
+    output float Metalness = 0,
+    output float Roughness = 0,
+    output float Bump = 0,
+){
+    color Map = texture(MapPath,S,T);
+    Metalness = Map[1];
+    Roughness = Map[0];
+    Bump = Map[2];
+
+}

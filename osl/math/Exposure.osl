@@ -1,4 +1,4 @@
-shader Exposure (
+shader TS_Exposure (
     color Icol = 0
     [[
         string label = "Color"

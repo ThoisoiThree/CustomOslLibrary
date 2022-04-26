@@ -1,4 +1,4 @@
-shader Clamp(
+shader TS_Clamp(
     color InC = 0.0
     [[
         string label = "Color"

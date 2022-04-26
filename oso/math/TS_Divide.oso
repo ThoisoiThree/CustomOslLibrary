@@ -1,7 +1,7 @@
 OpenShadingLanguage 1.00
-# Compiled by oslc 1.11.0@OPROJECT_VERSION_RELEASE_TYPE@
-# options: 
-shader Divide
+# Compiled by oslc 1.11.3
+# options: -O2
+shader TS_Divide
 param	color	InColorOne	0 0 0		%read{0,2} %write{2147483647,-1}
 param	color	InColorTwo	0 0 0		%read{0,0} %write{2147483647,-1}
 param	float	InFloatOne	0		%read{1,1} %write{2147483647,-1}
@@ -11,13 +11,7 @@ oparam	color	ColorRes	0 0 0		%read{2147483647,-1} %write{0,0}
 oparam	float	FloatRes	0		%read{2147483647,-1} %write{1,1}
 oparam	color	ColorFloatRes	0 0 0		%read{2147483647,-1} %write{2,2}
 code ___main___
-# C:\\CustomOsl\\osl\\math\\Divide.osl:15
-#     FloatRes = InFloatOne/InFloatTwo;
-	div		ColorRes InColorOne InColorTwo 	%filename{"C:\\CustomOsl\\osl\\math\\Divide.osl"} %line{15} %argrw{"wrr"}
-# C:\\CustomOsl\\osl\\math\\Divide.osl:16
-#     ColorFloatRes = InColorOne/InFloatColor;
+	div		ColorRes InColorOne InColorTwo 	%filename{"Divide.osl"} %line{15} %argrw{"wrr"}
 	div		FloatRes InFloatOne InFloatTwo 	%line{16} %argrw{"wrr"}
-# C:\\CustomOsl\\osl\\math\\Divide.osl:17
-#     
 	div		ColorFloatRes InColorOne InFloatColor 	%line{17} %argrw{"wrr"}
 	end
