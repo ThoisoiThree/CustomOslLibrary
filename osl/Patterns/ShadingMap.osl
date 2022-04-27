@@ -2,15 +2,22 @@ shader ShadingMap(
     string MapPath = ""
     [[
         string help = "R —> Roughness G —> Metalness B —> Bump",
-        string widget = "filename"
+        string widget = "filename",
     ]],
-    float S = 0,
-    float T = 0,
+
+
+   // float s = 0 [[int lockgeom = 0]],
+   // float t = 0 [[int lockgeom = 0]],
+
+
+    output color Out = 0,
     output float Metalness = 0,
     output float Roughness = 0,
     output float Bump = 0,
+
 ){
-    color Map = texture(MapPath,S,T);
+    color Map = (color) texture(MapPath,u,v);
+    Out = Map;
     Metalness = Map[1];
     Roughness = Map[0];
     Bump = Map[2];

@@ -1,0 +1,11 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.11.3
+# options: -O2
+shader use_st
+param	float	s	0		%meta{int,lockgeom,0}  %read{0,0} %write{2147483647,-1}
+param	float	t	0		%meta{int,lockgeom,0}  %read{0,0} %write{2147483647,-1}
+oparam	color	resultRGB	0 0 0		%read{2147483647,-1} %write{0,0}
+const	float	$const2	1		%read{0,0} %write{2147483647,-1}
+code ___main___
+	color		resultRGB s t $const2 	%filename{"st_test.osl"} %line{7} %argrw{"wrrr"}
+	end

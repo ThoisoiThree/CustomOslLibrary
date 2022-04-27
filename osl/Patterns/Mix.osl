@@ -1,0 +1,12 @@
+shader TS_Mix(
+    color c1 = 0[[string label = "Color One"]],
+    color c2 = 0[[string label = "Color Two"]],
+    float m_lvl = 1[[
+        string label = "Mix level",
+        string help = "If the mix level = 1, color two will be displayed"
+    ]],
+
+    output color Color = 0,
+){
+    Color = mix(c1,c2,m_lvl);
+}
