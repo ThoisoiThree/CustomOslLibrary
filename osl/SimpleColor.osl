@@ -1,7 +1,0 @@
-shader TS_SimpleColor (
-    color inputColor = 1,
-    float Multiply = 1,
-    output color outputColor = 1
-) {
-    outputColor = inputColor * Multiply;
-}
