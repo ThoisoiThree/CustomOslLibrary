@@ -1,0 +1,46 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.11.3
+# options: -O2
+shader TS_ACES
+param	color	Input	0 0 0		%read{0,5} %write{2147483647,-1}
+param	int	md	1		%meta{string,label,"Linearize"} %meta{string,widget,"checkBox"}  %read{1,1} %write{2147483647,-1}
+oparam	color	Output	0 0 0		%read{2147483647,-1} %write{11,11}
+local	color	in	%read{7,9} %write{0,5}
+local	matrix	sRGB2ACES	%read{11,11} %write{6,6}
+local	float	r	%read{10,10} %write{7,7}
+local	float	g	%read{10,10} %write{8,8}
+local	float	b	%read{10,10} %write{9,9}
+const	int	$const1	1		%read{1,8} %write{2147483647,-1}
+temp	int	$tmp1	%read{2,2} %write{1,1}
+const	int	$const2	11		%read{3,3} %write{2147483647,-1}
+const	int	$const3	5		%read{3,3} %write{2147483647,-1}
+temp	int	$tmp2	%read{4,4} %write{3,3}
+temp	float	$tmp3	%read{5,5} %write{4,4}
+const	float	$const4	0.613129973		%read{6,6} %write{2147483647,-1}
+const	float	$const5	0.0701199993		%read{6,6} %write{2147483647,-1}
+const	float	$const6	0.0205799993		%read{6,6} %write{2147483647,-1}
+const	int	$const7	0		%read{7,7} %write{2147483647,-1}
+const	float	$const8	0		%read{6,6} %write{2147483647,-1}
+const	float	$const9	0.339529991		%read{6,6} %write{2147483647,-1}
+const	float	$const10	0.916390002		%read{6,6} %write{2147483647,-1}
+const	float	$const11	0.109569997		%read{6,6} %write{2147483647,-1}
+const	float	$const12	0.0474100001		%read{6,6} %write{2147483647,-1}
+const	float	$const13	0.0134500004		%read{6,6} %write{2147483647,-1}
+const	float	$const14	0.86984998		%read{6,6} %write{2147483647,-1}
+const	float	$const15	1		%read{6,6} %write{2147483647,-1}
+const	int	$const16	2		%read{9,9} %write{2147483647,-1}
+temp	vector	$tmp4	%read{11,11} %write{10,10}
+code ___main___
+	assign		in Input 	%filename{"ACES.osl"} %line{13} %argrw{"wr"}
+	eq		$tmp1 md $const1 	%line{14} %argrw{"wrr"}
+	if		$tmp1 6 6 	%argrw{"r"}
+	div		$tmp2 $const2 $const3 	%line{15} %argrw{"wrr"}
+	assign		$tmp3 $tmp2 	%argrw{"wr"}
+	pow		in Input $tmp3 	%argrw{"wrr"}
+	matrix		sRGB2ACES $const4 $const5 $const6 $const8 $const9 $const10 $const11 $const8 $const12 $const13 $const14 $const8 $const8 $const8 $const8 $const15 	%line{20} %argrw{"wrrrrrrrrrrrrrrrr"}
+	compref		r in $const7 	%line{25} %argrw{"wrr"}
+	compref		g in $const1 	%argrw{"wrr"}
+	compref		b in $const16 	%argrw{"wrr"}
+	vector		$tmp4 r g b 	%line{26} %argrw{"wrrr"}
+	transformv	Output sRGB2ACES $tmp4 	%argrw{"wrr"}
+	end

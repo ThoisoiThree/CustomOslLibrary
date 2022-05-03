@@ -1,0 +1,7 @@
+shader TS_sRGB2Linear(
+    color Input = 0,
+    output color Output = 0,
+){
+    //x = y^(11/5)
+    Output = pow(Input, (11/5));
+}

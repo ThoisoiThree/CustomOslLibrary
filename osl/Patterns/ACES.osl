@@ -1,0 +1,26 @@
+shader TS_ACES(
+    color Input = 0,
+    int md = 1[[
+        string label = "Linearize",
+        string widget = "checkBox",
+    ]],
+
+
+    output color Output = 0,
+){  
+    color in;
+    in = Input;
+    if (md == 1){
+        in = pow(Input, (11/5));
+    }
+
+
+    matrix sRGB2ACES =
+    {0.61313, 0.07012, 0.02058, 0,
+     0.33953, 0.91639, 0.10957, 0,
+     0.04741, 0.01345, 0.86985, 0,
+     0, 0, 0, 1 };
+    
+    float r = in[0], g = in[1], b = in[2];
+    Output = transform(sRGB2ACES, vector(r, g, b));
+}
