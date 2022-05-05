@@ -2,12 +2,12 @@ OpenShadingLanguage 1.00
 # Compiled by oslc 1.11.3
 # options: -O2
 shader TS_Average
-param	color	c_one	0 0 0		%meta{string,label,"Color one"}  %read{0,10} %write{2147483647,-1}
-param	color	c_two	0 0 0		%meta{string,label,"Color two"}  %read{1,11} %write{2147483647,-1}
+param	color	c_one	0 0 0		%meta{string,label,"Color One"}  %read{0,10} %write{2147483647,-1}
+param	color	c_two	0 0 0		%meta{string,label,"Color Two"}  %read{1,11} %write{2147483647,-1}
 param	float	f_one	0		%meta{string,label,"Float one"}  %read{15,15} %write{2147483647,-1}
-param	float	f_two	0		%meta{string,label,"Float two"}  %read{15,15} %write{2147483647,-1}
-oparam	color	ColorAverage	0 0 0		%read{2147483647,-1} %write{4,14}
-oparam	float	FloatAverage	0		%read{2147483647,-1} %write{16,16}
+param	float	f_two	0		%meta{string,label,"Float Two"}  %read{15,15} %write{2147483647,-1}
+oparam	color	Color	0 0 0		%read{2147483647,-1} %write{4,14}
+oparam	float	Float	0		%read{2147483647,-1} %write{16,16}
 const	int	$const1	0		%read{0,4} %write{2147483647,-1}
 temp	float	$tmp1	%read{2,2} %write{0,0}
 temp	float	$tmp2	%read{2,2} %write{1,1}
@@ -30,17 +30,17 @@ code ___main___
 	compref		$tmp2 c_two $const1 	%argrw{"wrr"}
 	add		$tmp3 $tmp1 $tmp2 	%argrw{"wrr"}
 	div		$tmp4 $tmp3 $const3 	%argrw{"wrr"}
-	compassign	ColorAverage $const1 $tmp4 	%argrw{"wrr"}
+	compassign	Color $const1 $tmp4 	%argrw{"wrr"}
 	compref		$tmp5 c_one $const4 	%line{26} %argrw{"wrr"}
 	compref		$tmp6 c_two $const4 	%argrw{"wrr"}
 	add		$tmp7 $tmp5 $tmp6 	%argrw{"wrr"}
 	div		$tmp8 $tmp7 $const3 	%argrw{"wrr"}
-	compassign	ColorAverage $const4 $tmp8 	%argrw{"wrr"}
+	compassign	Color $const4 $tmp8 	%argrw{"wrr"}
 	compref		$tmp9 c_one $const2 	%line{27} %argrw{"wrr"}
 	compref		$tmp10 c_two $const2 	%argrw{"wrr"}
 	add		$tmp11 $tmp9 $tmp10 	%argrw{"wrr"}
 	div		$tmp12 $tmp11 $const3 	%argrw{"wrr"}
-	compassign	ColorAverage $const2 $tmp12 	%argrw{"wrr"}
+	compassign	Color $const2 $tmp12 	%argrw{"wrr"}
 	add		$tmp13 f_one f_two 	%line{29} %argrw{"wrr"}
-	div		FloatAverage $tmp13 $const3 	%argrw{"wrr"}
+	div		Float $tmp13 $const3 	%argrw{"wrr"}
 	end

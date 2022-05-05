@@ -1,7 +1,7 @@
 OpenShadingLanguage 1.00
 # Compiled by oslc 1.11.3
 # options: -O2
-shader TS_FloatToColor
+shader TS_Float2Color
 param	float	Red	0		%read{0,0} %write{2147483647,-1}
 param	float	Green	0		%read{1,1} %write{2147483647,-1}
 param	float	Blue	0		%read{2,2} %write{2147483647,-1}

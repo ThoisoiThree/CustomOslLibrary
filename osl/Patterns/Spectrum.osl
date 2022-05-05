@@ -1,0 +1,29 @@
+#include "..\..\include\tsLib.h"
+
+shader TS_Spectrum
+(
+    float Wavelength = 550
+        [[
+            string help = "Wavelength in nm",
+            float min = 380,
+            float max = 780,
+        ]],
+
+    float gam_r = 1
+        [[
+            string label = "Red Gamma",
+        ]],
+    float gam_g = 1
+        [[
+            string label = "Green Gamma",
+        ]],
+    float gam_b = 1
+        [[
+            string label = "Blue Gamma",
+        ]],
+
+    output color Out = 0,
+
+){
+    Out = getSpectrum(Wavelength, gam_r, gam_g, gam_b);
+}

@@ -4,9 +4,9 @@ OpenShadingLanguage 1.00
 shader TS_Blackbody
 param	float	Temperature	5500		%read{0,0} %write{2147483647,-1}
 param	float	Multiply	1		%read{0,0} %write{2147483647,-1}
-oparam	color	OutColor	0 0 0		%read{2147483647,-1} %write{1,1}
+oparam	color	Color	0 0 0		%read{2147483647,-1} %write{1,1}
 temp	float	$tmp1	%read{1,1} %write{0,0}
 code ___main___
 	mul		$tmp1 Temperature Multiply 	%filename{"Blackbody.osl"} %line{8} %argrw{"wrr"}
-	blackbody	OutColor $tmp1 	%argrw{"wr"}
+	blackbody	Color $tmp1 	%argrw{"wr"}
 	end
