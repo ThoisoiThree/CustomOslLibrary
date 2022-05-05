@@ -1,8 +1,8 @@
-shader TS_FloatToColor(
+shader TS_Float2Color(
     float Red = 0.0,
     float Green = 0.0,
     float Blue = 0.0,
-    output color Color = color(0,0,0)
+    output color Color = 0,
 ){
     Color[0] = Red;
     Color[1] = Green;

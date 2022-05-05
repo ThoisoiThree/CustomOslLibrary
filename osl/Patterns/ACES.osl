@@ -4,14 +4,12 @@ shader TS_ACES(
         string label = "Linearize",
         string widget = "checkBox",
     ]],
-
-
-    output color Output = 0,
+    output color Color = 0,
 ){  
     color in;
     in = Input;
     if (md == 1){
-        in = pow(Input, (11/5));
+        in = pow(Input, (5 / 11));
     }
 
 
@@ -22,5 +20,5 @@ shader TS_ACES(
      0, 0, 0, 1 };
     
     float r = in[0], g = in[1], b = in[2];
-    Output = transform(sRGB2ACES, vector(r, g, b));
+    Color = transform(sRGB2ACES, vector(r, g, b));
 }

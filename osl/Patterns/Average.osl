@@ -1,11 +1,11 @@
 shader TS_Average (
     color c_one = 0
     [[
-        string label = "Color one"
+        string label = "Color One"
     ]],
     color c_two = 0
     [[
-        string label = "Color two"
+        string label = "Color Two"
     ]],
 
     float f_one = 0
@@ -14,16 +14,16 @@ shader TS_Average (
     ]],
     float f_two = 0
     [[
-        string label = "Float two"
+        string label = "Float Two"
     ]],
 
-    output color ColorAverage = color(0, 0, 0),
-    output float FloatAverage = 0,
+    output color Color = color(0, 0, 0),
+    output float Float = 0,
 ) 
 {
-    ColorAverage[0] = (c_one[0]+c_two[0])/2; 
-    ColorAverage[1] = (c_one[1]+c_two[1])/2; 
-    ColorAverage[2] = (c_one[2]+c_two[2])/2; 
+    Color[0] = (c_one[0]+c_two[0])/2; 
+    Color[1] = (c_one[1]+c_two[1])/2; 
+    Color[2] = (c_one[2]+c_two[2])/2; 
     
-    FloatAverage = (f_one+f_two)/2;
+    Float = (f_one+f_two)/2;
 }

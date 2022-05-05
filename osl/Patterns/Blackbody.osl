@@ -1,8 +1,8 @@
 shader TS_Blackbody (
     float Temperature = 5500,
     float Multiply = 1,
-    output color OutColor = 0,
+    output color Color = 0,
 ) 
 {
-   OutColor = blackbody(Temperature*Multiply);
+   Color = blackbody(Temperature*Multiply);
 }
