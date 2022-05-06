@@ -1,6 +1,6 @@
 #include "stdosl.h"
 
-color getSpectrum(float w_lnt, float gamma_r, float gamma_g, float gamma_b)
+color getRgbSpectrum(float w_lnt, float gamma_r, float gamma_g, float gamma_b)
 {   
     //spectrum things
     float r, g, b;

@@ -25,5 +25,5 @@ shader TS_Spectrum
     output color Out = 0,
 
 ){
-    Out = getSpectrum(Wavelength, gam_r, gam_g, gam_b);
+    Out = getRgbSpectrum(Wavelength, gam_r, gam_g, gam_b);
 }

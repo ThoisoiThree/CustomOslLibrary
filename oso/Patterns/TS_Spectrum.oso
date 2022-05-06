@@ -11,7 +11,7 @@ local	float	___325_r	%read{87,91} %write{11,87}
 local	float	___325_g	%read{88,92} %write{12,88}
 local	float	___325_b	%read{89,93} %write{16,89}
 local	color	___325_res	%read{94,94} %write{90,93}
-const	string	$const1	"getSpectrum"		%read{0,0} %write{2147483647,-1}
+const	string	$const1	"getRgbSpectrum"		%read{0,0} %write{2147483647,-1}
 const	int	$const2	380		%read{1,1} %write{2147483647,-1}
 temp	int	$tmp1	%read{2,2} %write{1,1}
 temp	int	$tmp2	%read{3,7} %write{2,6}
