@@ -1,5 +1,5 @@
 #include "stdosl.h"
-//test1
+
 color getRgbSpectrum(float w_lnt, float gamma_r, float gamma_g, float gamma_b)
 {   
     //spectrum things
