@@ -63,7 +63,7 @@ float getFresnel(normal i_normal, float i_ior)
         return o_reflect;
 }
 
-color Linearize(color i_color)
+color linearize(color i_color)
 {
     color o_color = pow(i_color, (5/11));
     return o_color;

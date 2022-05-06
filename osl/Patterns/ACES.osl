@@ -1,7 +1,7 @@
 shader TS_ACES(
     color Input = 0,
     int md = 1[[
-        string label = "Linearize",
+        string label = "linearize",
         string widget = "checkBox",
     ]],
     output color Color = 0,
