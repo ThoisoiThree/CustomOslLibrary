@@ -1,5 +1,6 @@
 #include "stdosl.h"
 
+// gives RGB value from wavelength
 color getRgbSpectrum(float w_lnt, float gamma_r, float gamma_g, float gamma_b)
 {   
     //spectrum things
@@ -54,6 +55,7 @@ color getRgbSpectrum(float w_lnt, float gamma_r, float gamma_g, float gamma_b)
     return res;
 }
 
+// computes fresnel
 float getFresnel(normal i_normal, float i_ior)
 {
         float o_reflect = 0.0;
@@ -63,6 +65,7 @@ float getFresnel(normal i_normal, float i_ior)
         return o_reflect;
 }
 
+// linearise 2.2 gamma 
 color linearize(color i_color)
 {
     color o_color = pow(i_color, (5/11));
