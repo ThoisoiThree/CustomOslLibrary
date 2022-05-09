@@ -88,98 +88,98 @@ const	float	$const35	80		%read{83,83} %write{2147483647,-1}
 const	int	$const36	2		%read{93,93} %write{2147483647,-1}
 code ___main___
 	functioncall	$const1 95 	%filename{"Spectrum.osl"} %line{29} %argrw{"r"}
-	ge		$tmp1 Wavelength $const2 	%filename{"C:\CustomOslLibrary\include\tsLib.h"} %line{7} %argrw{"wrr"}
+	ge		$tmp1 Wavelength $const2 	%filename{"C:\CustomOslLibrary\include\tsLib.h"} %line{8} %argrw{"wrr"}
 	neq		$tmp2 $tmp1 $const3 	%argrw{"wrr"}
 	if		$tmp2 7 7 	%argrw{"r"}
 	le		$tmp3 Wavelength $const4 	%argrw{"wrr"}
 	neq		$tmp4 $tmp3 $const3 	%argrw{"wrr"}
 	assign		$tmp2 $tmp4 	%argrw{"wr"}
 	if		$tmp2 17 17 	%argrw{"r"}
-	sub		$tmp5 $const7 Wavelength 	%line{8} %argrw{"wrr"}
+	sub		$tmp5 $const7 Wavelength 	%line{9} %argrw{"wrr"}
 	mul		$tmp6 $const6 $tmp5 	%argrw{"wrr"}
 	div		$tmp7 $tmp6 $const9 	%argrw{"wrr"}
 	sub		___325_r $const5 $tmp7 	%argrw{"wrr"}
-	assign		___325_g $const3 	%line{9} %argrw{"wr"}
-	sub		$tmp8 $const7 Wavelength 	%line{10} %argrw{"wrr"}
+	assign		___325_g $const3 	%line{10} %argrw{"wr"}
+	sub		$tmp8 $const7 Wavelength 	%line{11} %argrw{"wrr"}
 	mul		$tmp9 $const5 $tmp8 	%argrw{"wrr"}
 	div		$tmp10 $tmp9 $const9 	%argrw{"wrr"}
 	add		___325_b $const10 $tmp10 	%argrw{"wrr"}
-	ge		$tmp11 Wavelength $const4 	%line{12} %argrw{"wrr"}
+	ge		$tmp11 Wavelength $const4 	%line{13} %argrw{"wrr"}
 	neq		$tmp12 $tmp11 $const3 	%argrw{"wrr"}
 	if		$tmp12 23 23 	%argrw{"r"}
 	le		$tmp13 Wavelength $const11 	%argrw{"wrr"}
 	neq		$tmp14 $tmp13 $const3 	%argrw{"wrr"}
 	assign		$tmp12 $tmp14 	%argrw{"wr"}
 	if		$tmp12 30 30 	%argrw{"r"}
-	sub		$tmp15 $const13 Wavelength 	%line{13} %argrw{"wrr"}
+	sub		$tmp15 $const13 Wavelength 	%line{14} %argrw{"wrr"}
 	mul		$tmp16 $const12 $tmp15 	%argrw{"wrr"}
 	div		$tmp17 $tmp16 $const9 	%argrw{"wrr"}
 	sub		___325_r $const12 $tmp17 	%argrw{"wrr"}
-	assign		___325_g $const3 	%line{14} %argrw{"wr"}
-	assign		___325_b $const14 	%line{15} %argrw{"wr"}
-	ge		$tmp18 Wavelength $const15 	%line{17} %argrw{"wrr"}
+	assign		___325_g $const3 	%line{15} %argrw{"wr"}
+	assign		___325_b $const14 	%line{16} %argrw{"wr"}
+	ge		$tmp18 Wavelength $const15 	%line{18} %argrw{"wrr"}
 	neq		$tmp19 $tmp18 $const3 	%argrw{"wrr"}
 	if		$tmp19 36 36 	%argrw{"r"}
 	le		$tmp20 Wavelength $const16 	%argrw{"wrr"}
 	neq		$tmp21 $tmp20 $const3 	%argrw{"wrr"}
 	assign		$tmp19 $tmp21 	%argrw{"wr"}
 	if		$tmp19 41 41 	%argrw{"r"}
-	assign		___325_r $const3 	%line{18} %argrw{"wr"}
-	assign		___325_g $const14 	%line{19} %argrw{"wr"}
-	sub		$tmp22 $const17 Wavelength 	%line{20} %argrw{"wrr"}
+	assign		___325_r $const3 	%line{19} %argrw{"wr"}
+	assign		___325_g $const14 	%line{20} %argrw{"wr"}
+	sub		$tmp22 $const17 Wavelength 	%line{21} %argrw{"wrr"}
 	div		___325_b $tmp22 $const19 	%argrw{"wrr"}
-	ge		$tmp23 Wavelength $const16 	%line{22} %argrw{"wrr"}
+	ge		$tmp23 Wavelength $const16 	%line{23} %argrw{"wrr"}
 	neq		$tmp24 $tmp23 $const3 	%argrw{"wrr"}
 	if		$tmp24 47 47 	%argrw{"r"}
 	le		$tmp25 Wavelength $const20 	%argrw{"wrr"}
 	neq		$tmp26 $tmp25 $const3 	%argrw{"wrr"}
 	assign		$tmp24 $tmp26 	%argrw{"wr"}
 	if		$tmp24 53 53 	%argrw{"r"}
-	sub		$tmp27 $const21 Wavelength 	%line{23} %argrw{"wrr"}
+	sub		$tmp27 $const21 Wavelength 	%line{24} %argrw{"wrr"}
 	div		$tmp28 $tmp27 $const23 	%argrw{"wrr"}
 	sub		___325_r $const24 $tmp28 	%argrw{"wrr"}
-	assign		___325_g $const14 	%line{24} %argrw{"wr"}
-	assign		___325_b $const3 	%line{25} %argrw{"wr"}
-	ge		$tmp29 Wavelength $const20 	%line{27} %argrw{"wrr"}
+	assign		___325_g $const14 	%line{25} %argrw{"wr"}
+	assign		___325_b $const3 	%line{26} %argrw{"wr"}
+	ge		$tmp29 Wavelength $const20 	%line{28} %argrw{"wrr"}
 	neq		$tmp30 $tmp29 $const3 	%argrw{"wrr"}
 	if		$tmp30 59 59 	%argrw{"r"}
 	le		$tmp31 Wavelength $const25 	%argrw{"wrr"}
 	neq		$tmp32 $tmp31 $const3 	%argrw{"wrr"}
 	assign		$tmp30 $tmp32 	%argrw{"wr"}
 	if		$tmp30 64 64 	%argrw{"r"}
-	assign		___325_r $const14 	%line{28} %argrw{"wr"}
-	sub		$tmp33 $const26 Wavelength 	%line{29} %argrw{"wrr"}
+	assign		___325_r $const14 	%line{29} %argrw{"wr"}
+	sub		$tmp33 $const26 Wavelength 	%line{30} %argrw{"wrr"}
 	div		___325_g $tmp33 $const28 	%argrw{"wrr"}
-	assign		___325_b $const3 	%line{30} %argrw{"wr"}
-	ge		$tmp34 Wavelength $const25 	%line{32} %argrw{"wrr"}
+	assign		___325_b $const3 	%line{31} %argrw{"wr"}
+	ge		$tmp34 Wavelength $const25 	%line{33} %argrw{"wrr"}
 	neq		$tmp35 $tmp34 $const3 	%argrw{"wrr"}
 	if		$tmp35 70 70 	%argrw{"r"}
 	le		$tmp36 Wavelength $const29 	%argrw{"wrr"}
 	neq		$tmp37 $tmp36 $const3 	%argrw{"wrr"}
 	assign		$tmp35 $tmp37 	%argrw{"wr"}
 	if		$tmp35 74 74 	%argrw{"r"}
-	assign		___325_r $const14 	%line{33} %argrw{"wr"}
-	assign		___325_g $const3 	%line{34} %argrw{"wr"}
-	assign		___325_b $const3 	%line{35} %argrw{"wr"}
-	ge		$tmp38 Wavelength $const29 	%line{37} %argrw{"wrr"}
+	assign		___325_r $const14 	%line{34} %argrw{"wr"}
+	assign		___325_g $const3 	%line{35} %argrw{"wr"}
+	assign		___325_b $const3 	%line{36} %argrw{"wr"}
+	ge		$tmp38 Wavelength $const29 	%line{38} %argrw{"wrr"}
 	neq		$tmp39 $tmp38 $const3 	%argrw{"wrr"}
 	if		$tmp39 80 80 	%argrw{"r"}
 	le		$tmp40 Wavelength $const30 	%argrw{"wrr"}
 	neq		$tmp41 $tmp40 $const3 	%argrw{"wrr"}
 	assign		$tmp39 $tmp41 	%argrw{"wr"}
 	if		$tmp39 87 87 	%argrw{"r"}
-	sub		$tmp42 $const33 Wavelength 	%line{38} %argrw{"wrr"}
+	sub		$tmp42 $const33 Wavelength 	%line{39} %argrw{"wrr"}
 	mul		$tmp43 $const32 $tmp42 	%argrw{"wrr"}
 	div		$tmp44 $tmp43 $const35 	%argrw{"wrr"}
 	sub		___325_r $const31 $tmp44 	%argrw{"wrr"}
-	assign		___325_g $const3 	%line{39} %argrw{"wr"}
-	assign		___325_b $const3 	%line{40} %argrw{"wr"}
-	pow		___325_r ___325_r gam_r 	%line{44} %argrw{"wrr"}
-	pow		___325_g ___325_g gam_g 	%line{45} %argrw{"wrr"}
-	pow		___325_b ___325_b gam_b 	%line{46} %argrw{"wrr"}
-	assign		___325_res $const3 	%line{49} %argrw{"wr"}
-	compassign	___325_res $const3 ___325_r 	%line{50} %argrw{"wrr"}
-	compassign	___325_res $const14 ___325_g 	%line{51} %argrw{"wrr"}
-	compassign	___325_res $const36 ___325_b 	%line{52} %argrw{"wrr"}
-	assign		Out ___325_res 	%line{54} %argrw{"wr"}
+	assign		___325_g $const3 	%line{40} %argrw{"wr"}
+	assign		___325_b $const3 	%line{41} %argrw{"wr"}
+	pow		___325_r ___325_r gam_r 	%line{45} %argrw{"wrr"}
+	pow		___325_g ___325_g gam_g 	%line{46} %argrw{"wrr"}
+	pow		___325_b ___325_b gam_b 	%line{47} %argrw{"wrr"}
+	assign		___325_res $const3 	%line{50} %argrw{"wr"}
+	compassign	___325_res $const3 ___325_r 	%line{51} %argrw{"wrr"}
+	compassign	___325_res $const14 ___325_g 	%line{52} %argrw{"wrr"}
+	compassign	___325_res $const36 ___325_b 	%line{53} %argrw{"wrr"}
+	assign		Out ___325_res 	%line{55} %argrw{"wr"}
 	end
