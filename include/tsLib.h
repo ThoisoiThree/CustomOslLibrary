@@ -42,9 +42,9 @@ color getRgbSpectrum(float w_lnt, float gamma_r, float gamma_g, float gamma_b)
     }
 
     //apply gamma correction
-    r = pow(r, gamma_r);
-    g = pow(g, gamma_g);
-    b = pow(b, gamma_b);
+    r = pow(r, (1 / gamma_r));
+    g = pow(g, (1 / gamma_g));
+    b = pow(b, (1 / gamma_b));
 
     //output color
     color res  = 0;
@@ -68,6 +68,6 @@ float getFresnel(normal i_normal, float i_ior)
 // linearise 2.2 gamma 
 color linearize(color i_color)
 {
-    color o_color = pow(i_color, (1/0.45454545454));
+    color o_color = pow(i_color, 2.2);
     return o_color;
 }

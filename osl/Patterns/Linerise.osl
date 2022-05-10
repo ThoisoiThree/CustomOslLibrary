@@ -3,5 +3,5 @@ shader TS_sRGB2Linear(
     output color Color = 0,
 ){
     //x = y^(11/5)
-    Color = pow(Input, (1 / 0.45454545454));
+    Color = pow(Input, 2.2);
 }

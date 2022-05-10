@@ -9,7 +9,7 @@ shader TS_ACES(
     color in;
     in = Input;
     if (md == 1){
-        in = pow(Input, (1 / 0.45454545454));
+        in = pow(Input, 2.2);
     }
 
 
