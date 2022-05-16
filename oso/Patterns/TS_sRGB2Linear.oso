@@ -2,12 +2,9 @@ OpenShadingLanguage 1.00
 # Compiled by oslc 1.11.3
 # options: -O2
 shader TS_sRGB2Linear
-param	color	Input	0 0 0		%read{1,1} %write{2147483647,-1}
-oparam	color	Color	0 0 0		%read{2147483647,-1} %write{1,1}
-const	float	$const2	0.454545468		%read{0,0} %write{2147483647,-1}
-temp	float	$tmp1	%read{1,1} %write{0,0}
-const	float	$const3	1		%read{0,0} %write{2147483647,-1}
+param	color	Input	0 0 0		%read{0,0} %write{2147483647,-1}
+oparam	color	Color	0 0 0		%read{2147483647,-1} %write{0,0}
+const	float	$const1	2.20000005		%read{0,0} %write{2147483647,-1}
 code ___main___
-	div		$tmp1 $const3 $const2 	%filename{"Linerise.osl"} %line{7} %argrw{"wrr"}
-	pow		Color Input $tmp1 	%argrw{"wrr"}
+	pow		Color Input $const1 	%filename{"Linerise.osl"} %line{7} %argrw{"wrr"}
 	end

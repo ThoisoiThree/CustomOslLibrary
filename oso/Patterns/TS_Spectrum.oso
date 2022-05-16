@@ -4,18 +4,18 @@ OpenShadingLanguage 1.00
 shader TS_Spectrum
 param	float	Wavelength	550		%meta{string,help,"Wavelength in nm"} %meta{float,min,380} %meta{float,max,780}  %read{1,81} %write{2147483647,-1}
 param	float	gam_r	1		%meta{string,label,"Red Gamma"}  %read{87,87} %write{2147483647,-1}
-param	float	gam_g	1		%meta{string,label,"Green Gamma"}  %read{88,88} %write{2147483647,-1}
-param	float	gam_b	1		%meta{string,label,"Blue Gamma"}  %read{89,89} %write{2147483647,-1}
-oparam	color	Out	0 0 0		%read{2147483647,-1} %write{94,94}
-local	float	___325_r	%read{87,91} %write{11,87}
-local	float	___325_g	%read{88,92} %write{12,88}
-local	float	___325_b	%read{89,93} %write{16,89}
-local	color	___325_res	%read{94,94} %write{90,93}
+param	float	gam_g	1		%meta{string,label,"Green Gamma"}  %read{89,89} %write{2147483647,-1}
+param	float	gam_b	1		%meta{string,label,"Blue Gamma"}  %read{91,91} %write{2147483647,-1}
+oparam	color	Out	0 0 0		%read{2147483647,-1} %write{97,97}
+local	float	___325_r	%read{88,94} %write{11,88}
+local	float	___325_g	%read{90,95} %write{12,90}
+local	float	___325_b	%read{92,96} %write{16,92}
+local	color	___325_res	%read{97,97} %write{93,96}
 const	string	$const1	"getRgbSpectrum"		%read{0,0} %write{2147483647,-1}
 const	int	$const2	380		%read{1,1} %write{2147483647,-1}
 temp	int	$tmp1	%read{2,2} %write{1,1}
 temp	int	$tmp2	%read{3,7} %write{2,6}
-const	int	$const3	0		%read{2,91} %write{2147483647,-1}
+const	int	$const3	0		%read{2,94} %write{2147483647,-1}
 const	int	$const4	410		%read{4,17} %write{2147483647,-1}
 temp	int	$tmp3	%read{5,5} %write{4,4}
 temp	int	$tmp4	%read{6,6} %write{5,5}
@@ -40,7 +40,7 @@ temp	float	$tmp15	%read{25,25} %write{24,24}
 const	float	$const13	440		%read{24,24} %write{2147483647,-1}
 temp	float	$tmp16	%read{26,26} %write{25,25}
 temp	float	$tmp17	%read{27,27} %write{26,26}
-const	int	$const14	1		%read{29,92} %write{2147483647,-1}
+const	int	$const14	1		%read{29,95} %write{2147483647,-1}
 const	int	$const15	490		%read{30,30} %write{2147483647,-1}
 temp	int	$tmp18	%read{31,31} %write{30,30}
 temp	int	$tmp19	%read{32,36} %write{31,35}
@@ -59,7 +59,7 @@ temp	float	$tmp27	%read{49,49} %write{48,48}
 const	float	$const21	580		%read{48,48} %write{2147483647,-1}
 temp	float	$tmp28	%read{50,50} %write{49,49}
 const	float	$const23	70		%read{49,49} %write{2147483647,-1}
-const	float	$const24	1		%read{50,50} %write{2147483647,-1}
+const	float	$const24	1		%read{50,91} %write{2147483647,-1}
 temp	int	$tmp29	%read{54,54} %write{53,53}
 temp	int	$tmp30	%read{55,59} %write{54,58}
 const	int	$const25	640		%read{56,64} %write{2147483647,-1}
@@ -85,9 +85,12 @@ const	float	$const33	780		%read{81,81} %write{2147483647,-1}
 temp	float	$tmp43	%read{83,83} %write{82,82}
 temp	float	$tmp44	%read{84,84} %write{83,83}
 const	float	$const35	80		%read{83,83} %write{2147483647,-1}
-const	int	$const36	2		%read{93,93} %write{2147483647,-1}
+temp	float	$tmp45	%read{88,88} %write{87,87}
+temp	float	$tmp46	%read{90,90} %write{89,89}
+temp	float	$tmp47	%read{92,92} %write{91,91}
+const	int	$const36	2		%read{96,96} %write{2147483647,-1}
 code ___main___
-	functioncall	$const1 95 	%filename{"Spectrum.osl"} %line{29} %argrw{"r"}
+	functioncall	$const1 98 	%filename{"Spectrum.osl"} %line{29} %argrw{"r"}
 	ge		$tmp1 Wavelength $const2 	%filename{"C:\CustomOslLibrary\include\tsLib.h"} %line{8} %argrw{"wrr"}
 	neq		$tmp2 $tmp1 $const3 	%argrw{"wrr"}
 	if		$tmp2 7 7 	%argrw{"r"}
@@ -174,9 +177,12 @@ code ___main___
 	sub		___325_r $const31 $tmp44 	%argrw{"wrr"}
 	assign		___325_g $const3 	%line{40} %argrw{"wr"}
 	assign		___325_b $const3 	%line{41} %argrw{"wr"}
-	pow		___325_r ___325_r gam_r 	%line{45} %argrw{"wrr"}
-	pow		___325_g ___325_g gam_g 	%line{46} %argrw{"wrr"}
-	pow		___325_b ___325_b gam_b 	%line{47} %argrw{"wrr"}
+	div		$tmp45 $const24 gam_r 	%line{45} %argrw{"wrr"}
+	pow		___325_r ___325_r $tmp45 	%argrw{"wrr"}
+	div		$tmp46 $const24 gam_g 	%line{46} %argrw{"wrr"}
+	pow		___325_g ___325_g $tmp46 	%argrw{"wrr"}
+	div		$tmp47 $const24 gam_b 	%line{47} %argrw{"wrr"}
+	pow		___325_b ___325_b $tmp47 	%argrw{"wrr"}
 	assign		___325_res $const3 	%line{50} %argrw{"wr"}
 	compassign	___325_res $const3 ___325_r 	%line{51} %argrw{"wrr"}
 	compassign	___325_res $const14 ___325_g 	%line{52} %argrw{"wrr"}
