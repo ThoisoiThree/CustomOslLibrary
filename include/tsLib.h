@@ -71,3 +71,4 @@ color linearize(color i_color)
     color o_color = pow(i_color, 2.2);
     return o_color;
 }
+
