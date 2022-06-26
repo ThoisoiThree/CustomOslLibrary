@@ -1,15 +1,30 @@
 shader TS_Toon(
     color Base = 1,
     color Edge = 0,
-    float Angle = 50,
+    float Angle = 50
+    [[float min = 0.0, float max = 90.0]],
+    int invert = 0
+    [[string widget = "checkBox"]],
     output color Color = 0)
 {
     float angle = cos(radians(Angle));
 
-    if(abs(dot(-I,N)) > angle)
-    {
-        Color = Base;
-    } else {
-        Color = Edge;
+    if (invert != 1){
+
+        if(abs(dot(-I,N)) > angle)
+        {
+            Color = Base;
+        } else {
+            Color = Edge;
+        }
+
+    }else{
+
+        if(abs(dot(-I,N)) > angle)
+        {
+            Color = Edge;
+        } else {
+            Color = Base;
+        }
     }
 }

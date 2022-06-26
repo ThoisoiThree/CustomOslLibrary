@@ -1,0 +1,11 @@
+shader TS_Texture(
+    string file_path = ""
+    [[string widget = "filename"]],
+
+    output color Color = 0,
+
+){  
+    point st;
+    getattribute("st", st);
+    Color = texture(file_path, st[0], st[1]);
+}
