@@ -1,0 +1,29 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.11.3
+# options: -O2
+shader TS_ShadingMap
+param	string	file_path	""		%meta{string,widget,"fileInput"} %meta{string,label,"File Path"}  %read{4,4} %write{2147483647,-1}
+oparam	float	Roughness	0		%read{2147483647,-1} %write{5,5}
+oparam	float	Metalness	0		%read{2147483647,-1} %write{6,6}
+oparam	float	Bump	0		%read{2147483647,-1} %write{7,7}
+local	float[2]	st	%read{1,2} %write{0,0} %derivs
+local	color	buffer	%read{5,7} %write{4,4}
+temp	int	$tmp1	%read{2147483647,-1} %write{0,0}
+const	string	$const1	"st"		%read{0,0} %write{2147483647,-1}
+const	int	$const2	0		%read{1,5} %write{2147483647,-1}
+temp	float	$tmp2	%read{4,4} %write{1,1} %derivs
+const	int	$const3	1		%read{2,6} %write{2147483647,-1}
+temp	float	$tmp3	%read{3,3} %write{2,2} %derivs
+temp	float	$tmp4	%read{4,4} %write{3,3} %derivs
+const	float	$const4	1		%read{3,3} %write{2147483647,-1}
+const	int	$const5	2		%read{7,7} %write{2147483647,-1}
+code ___main___
+	getattribute	$tmp1 $const1 st 	%filename{"ShadingMap.osl"} %line{12} %argrw{"wrw"}
+	aref		$tmp2 st $const2 	%line{14} %argrw{"wrr"}
+	aref		$tmp3 st $const3 	%argrw{"wrr"}
+	sub		$tmp4 $const4 $tmp3 	%argrw{"wrr"}
+	texture		buffer file_path $tmp2 $tmp4 	%argrw{"wrrr"} %argderivs{2,3}
+	compref		Roughness buffer $const2 	%line{15} %argrw{"wrr"}
+	compref		Metalness buffer $const3 	%line{16} %argrw{"wrr"}
+	compref		Bump buffer $const5 	%line{17} %argrw{"wrr"}
+	end

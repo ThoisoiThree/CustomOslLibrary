@@ -1,11 +1,14 @@
 shader TS_Texture(
     string file_path = ""
-    [[string widget = "filename"]],
+    [[string widget = "fileInput",
+      string label = "File Path"]],
 
     output color Color = 0,
 
 ){  
-    point st;
+    float st[2];
     getattribute("st", st);
-    Color = texture(file_path, st[0], st[1]);
+
+    
+    Color = texture(file_path, st[0], 1 - st[1]);
 }

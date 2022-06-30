@@ -1,0 +1,18 @@
+shader TS_ShadingMap(
+    string file_path = ""
+    [[string widget = "fileInput",
+      string label = "File Path"]],
+
+    output float Roughness = 0,
+    output float Metalness = 0,
+    output float Bump = 0,
+
+){  
+    float st[2];
+    getattribute("st", st);
+
+    color buffer = texture(file_path, st[0], 1 - st[1]);
+    Roughness = buffer[0];
+    Metalness = buffer[1];
+    Bump = buffer[2];
+}

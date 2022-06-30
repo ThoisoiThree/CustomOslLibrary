@@ -1,4 +1,6 @@
-#include "stdosl.h"
+#pragma once
+//#include "stdosl.h"
+
 
 // gives RGB value from wavelength
 color getRgbSpectrum(float w_lnt, float gamma_r, float gamma_g, float gamma_b)
@@ -47,11 +49,12 @@ color getRgbSpectrum(float w_lnt, float gamma_r, float gamma_g, float gamma_b)
     b = pow(b, (1 / gamma_b));
 
     //output color
-    color res  = 0;
-    res[0] = r;
-    res[1] = g;
-    res[2] = b;
+    color res = color (r, g, b);
 
+  /*res[0] = r;
+    res[1] = g;
+    res[2] = b;*/
+  
     return res;
 }
 

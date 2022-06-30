@@ -1,4 +1,4 @@
-#include "..\..\include\tsLib.h"
+#include "..\..\include\OslFunctions.h"
 
 shader TS_Spectrum
 (

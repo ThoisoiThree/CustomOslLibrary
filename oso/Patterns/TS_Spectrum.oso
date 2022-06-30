@@ -91,7 +91,7 @@ temp	float	$tmp47	%read{92,92} %write{91,91}
 const	int	$const36	2		%read{96,96} %write{2147483647,-1}
 code ___main___
 	functioncall	$const1 98 	%filename{"Spectrum.osl"} %line{29} %argrw{"r"}
-	ge		$tmp1 Wavelength $const2 	%filename{"C:\CustomOslLibrary\include\tsLib.h"} %line{8} %argrw{"wrr"}
+	ge		$tmp1 Wavelength $const2 	%filename{"C:\CustomOslLibrary\include\OslFunctions.h"} %line{8} %argrw{"wrr"}
 	neq		$tmp2 $tmp1 $const3 	%argrw{"wrr"}
 	if		$tmp2 7 7 	%argrw{"r"}
 	le		$tmp3 Wavelength $const4 	%argrw{"wrr"}
