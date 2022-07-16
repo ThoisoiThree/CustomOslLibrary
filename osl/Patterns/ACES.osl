@@ -1,8 +1,10 @@
 shader TS_ACES(
     color Input = 0,
     int md = 1[[
-        string label = "linearize",
+        string label = "Linearize",
         string widget = "checkBox",
+        string help = "<b>Use it when sRGB is 2.2 gamma</b>",
+        int connectable = 0
     ]],
     output color Color = 0,
 ){  

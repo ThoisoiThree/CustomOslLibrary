@@ -6,9 +6,15 @@ shader TS_Invert (
     [[ string label = "Float"]],
 
     float ClampMin = 0
-    [[ string label = "Clamp Min"]],
+    [[ 
+        string label = "Clamp Min",
+        int connectable = 0
+    ]],
     float ClampMax = 1
-    [[ string label = "Clamp Max"]],
+    [[ 
+        string label = "Clamp Max",
+        int connectable = 0
+    ]],
 
     output color o_color = 0
     [[ string label = "Color"]],

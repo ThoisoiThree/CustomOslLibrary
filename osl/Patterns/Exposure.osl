@@ -7,7 +7,11 @@ shader TS_Exposure (
     [[
         string label = "Float"
     ]],
-    float Stops = 0,
+    float Stops = 0
+    [[
+        string help = "<b>Stops of exposure</b>",
+        int connectable = 0
+    ]],
 
     output color Color = 0,
     output float Float = 0,

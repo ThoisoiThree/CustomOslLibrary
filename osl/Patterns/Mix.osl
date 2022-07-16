@@ -3,7 +3,7 @@ shader TS_Mix(
     color c2 = 0[[string label = "Color Two"]],
     float m_lvl = 1[[
         string label = "Mix level",
-        string help = "If the mix level = 1, color two will be displayed",
+        string help = "If the <b>mix level = 1</b>, color two will be displayed",
         float min = 0,
         float max = 1
     ]],

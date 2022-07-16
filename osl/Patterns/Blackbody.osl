@@ -1,6 +1,11 @@
 shader TS_Blackbody (
-    float Temperature = 5500,
-    float Multiply = 1,
+    float Temperature = 5500
+    [[string help = "Temperature in <b>kelvins</b>"]],
+    float Multiply = 1
+    [[
+    string help = "Temperature <b>scaling factor</b>",
+    int connectable = 0
+    ]],
     output color Color = 0,
 ) 
 {

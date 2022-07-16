@@ -4,14 +4,14 @@ OpenShadingLanguage 1.00
 shader TS_Exposure
 param	color	Icol	0 0 0		%meta{string,label,"Color"}  %read{1,1} %write{2147483647,-1}
 param	float	ifl	0		%meta{string,label,"Float"}  %read{3,3} %write{2147483647,-1}
-param	float	Stops	0		%read{0,2} %write{2147483647,-1}
+param	float	Stops	0		%meta{string,help,"<b>Stops of exposure</b>"} %meta{int,connectable,0}  %read{0,2} %write{2147483647,-1}
 oparam	color	Color	0 0 0		%read{2147483647,-1} %write{1,1}
 oparam	float	Float	0		%read{2147483647,-1} %write{3,3}
 temp	float	$tmp1	%read{1,1} %write{0,0}
 temp	float	$tmp2	%read{3,3} %write{2,2}
 code ___main___
-	exp2		$tmp1 Stops 	%filename{"Exposure.osl"} %line{17} %argrw{"wr"}
+	exp2		$tmp1 Stops 	%filename{"Exposure.osl"} %line{21} %argrw{"wr"}
 	mul		Color Icol $tmp1 	%argrw{"wrr"}
-	exp2		$tmp2 Stops 	%line{18} %argrw{"wr"}
+	exp2		$tmp2 Stops 	%line{22} %argrw{"wr"}
 	mul		Float ifl $tmp2 	%argrw{"wrr"}
 	end

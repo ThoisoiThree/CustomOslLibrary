@@ -10,8 +10,10 @@ shader TS_Divide(
     float i_f_two = 0.0
     [[ string label = "Float Two"]],
     float i_f_col = 0.0
-    [[ string label = "Float'n'Color"
-       string help = "Use it to divide color by float value"
+    [[ 
+    string label = "Float'n'Color"
+    string help = "<p>Use it to divide <b>color by the float value</b></p>"
+                  "When you use <b>Float'n'Color</b> connect the color value to the <b>Color One</b> and connect the float value to the <b>Float One</b>"
     ]],
 
     output color Color = color(0.0,0.0,0.0),

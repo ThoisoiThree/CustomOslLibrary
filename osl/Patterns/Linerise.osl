@@ -1,7 +1,12 @@
 shader TS_sRGB2Linear(
-    color Input = 0,
+    color Color = 0,
+    float Gamma = 2.2
+    [[
+        int connectable = 0,
+        string help = "The value of image gamma"
+    ]],
     output color Color = 0,
 ){
     //x = y^(11/5)
-    Color = pow(Input, 2.2);
+    Color = pow(Input, Gamma);
 }
