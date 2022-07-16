@@ -27,5 +27,5 @@ shader TlmSpecular(
 ){
     float SFren = getFresnel(normalize(N),ior);
 
-    BSDF = ( microfacet("ggx", N, SRough, ior, 0))*SFren*SInt*Spec;
+    BSDF = (microfacet("ggx", N, SRough, ior, 0))*SFren*SInt*Spec;
 }
