@@ -1,0 +1,49 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.11.3
+# options: -O2
+shader TS_Toon
+param	color	Base	1 1 1		%read{11,19} %write{2147483647,-1}
+param	color	Edge	0 0 0		%read{12,18} %write{2147483647,-1}
+param	float	Angle	50		%meta{float,min,0} %meta{float,max,90}  %read{2,2} %write{2147483647,-1}
+param	int	invert	0		%meta{string,widget,"checkBox"}  %read{4,4} %write{2147483647,-1}
+oparam	color	Color	0 0 0		%read{2147483647,-1} %write{11,19}
+global	vector	I	%read{6,13} %write{2147483647,-1}
+global	normal	N	%read{7,14} %write{2147483647,-1}
+local	float	angle	%read{9,16} %write{3,3}
+temp	float	$tmp1	%read{3,3} %write{2,2}
+const	string	$const1	"radians"		%read{0,0} %write{2147483647,-1}
+const	float	$const2	3.14159274		%read{1,1} %write{2147483647,-1}
+const	float	$const3	180		%read{1,1} %write{2147483647,-1}
+temp	float	$tmp2	%read{2,2} %write{1,1}
+const	int	$const4	1		%read{4,4} %write{2147483647,-1}
+temp	int	$tmp3	%read{5,5} %write{4,4}
+temp	float	$tmp4	%read{9,9} %write{8,8}
+temp	float	$tmp5	%read{8,8} %write{7,7}
+temp	vector	$tmp6	%read{7,7} %write{6,6}
+temp	int	$tmp7	%read{10,10} %write{9,9}
+temp	float	$tmp8	%read{16,16} %write{15,15}
+temp	float	$tmp9	%read{15,15} %write{14,14}
+temp	vector	$tmp10	%read{14,14} %write{13,13}
+temp	int	$tmp11	%read{17,17} %write{16,16}
+code ___main___
+	functioncall	$const1 3 	%filename{"Toon.osl"} %line{11} %argrw{"r"}
+	div		$tmp2 $const2 $const3 	%filename{"C:\Program Files\3Delight\osl\stdosl.h"} %line{88} %argrw{"wrr"}
+	mul		$tmp1 Angle $tmp2 	%argrw{"wrr"}
+	cos		angle $tmp1 	%filename{"Toon.osl"} %line{11} %argrw{"wr"}
+	neq		$tmp3 invert $const4 	%line{13} %argrw{"wrr"}
+	if		$tmp3 13 20 	%argrw{"r"}
+	neg		$tmp6 I 	%line{15} %argrw{"wr"}
+	dot		$tmp5 $tmp6 N 	%argrw{"wrr"}
+	abs		$tmp4 $tmp5 	%argrw{"wr"}
+	gt		$tmp7 $tmp4 angle 	%argrw{"wrr"}
+	if		$tmp7 12 13 	%argrw{"r"}
+	assign		Color Base 	%line{17} %argrw{"wr"}
+	assign		Color Edge 	%line{19} %argrw{"wr"}
+	neg		$tmp10 I 	%line{24} %argrw{"wr"}
+	dot		$tmp9 $tmp10 N 	%argrw{"wrr"}
+	abs		$tmp8 $tmp9 	%argrw{"wr"}
+	gt		$tmp11 $tmp8 angle 	%argrw{"wrr"}
+	if		$tmp11 19 20 	%argrw{"r"}
+	assign		Color Edge 	%line{26} %argrw{"wr"}
+	assign		Color Base 	%line{28} %argrw{"wr"}
+	end

@@ -11,9 +11,11 @@ shader TS_Divide(
     [[ string label = "Float Two"]],
     float i_f_col = 0.0
     [[ 
-    string label = "Float'n'Color"
-    string help = "<p>Use it to divide <b>color by the float value</b></p>"
-                  "When you use <b>Float'n'Color</b> connect the color value to the <b>Color One</b> and connect the float value to the <b>Float One</b>"
+    string label = "Float'n'Color",
+    string help = "<h1>Use it to divide <b>color by the float value</h1></p>"
+                     "When you use <b>Float'n'Color</b><br/>"
+                     "connect the color value to the <b>Color One</b><br/>"
+                     "and connect the float value to the <b>Float'n'Color</b>"
     ]],
 
     output color Color = color(0.0,0.0,0.0),

@@ -1,0 +1,14 @@
+shader TS_Linearize(
+    color i_color = 0
+    [[string label = "Color"]],
+    float Gamma = 2.2
+    [[
+        int connectable = 0,
+        string help = "The value of image gamma</br></br>"
+                      "<img src='https://pyimagesearch.com/wp-content/uploads/2015/09/gamma_correction_example.jpg' style='width:400px;height:200px;'>",
+    ]],
+    output color Color = 0,
+){
+    //x = y^(11/5)
+    Color = pow(i_color, Gamma);
+}

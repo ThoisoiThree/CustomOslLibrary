@@ -1,0 +1,17 @@
+OpenShadingLanguage 1.00
+# Compiled by oslc 1.11.3
+# options: -O2
+shader TS_Divide
+param	color	i_c_one	0 0 0		%meta{string,label,"Color One"}  %read{0,2} %write{2147483647,-1}
+param	color	i_c_two	0 0 0		%meta{string,label,"Color Two"}  %read{0,0} %write{2147483647,-1}
+param	float	i_f_one	0		%meta{string,label,"Float One"}  %read{1,1} %write{2147483647,-1}
+param	float	i_f_two	0		%meta{string,label,"Float Two"}  %read{1,1} %write{2147483647,-1}
+param	float	i_f_col	0		%meta{string,label,"Float'n'Color"} %meta{string,help,"<h1>Use it to divide <b>color by the float value</h1></p>When you use <b>Float'n'Color</b><br/>connect the color value to the <b>Color One</b><br/>and connect the float value to the <b>Float'n'Color</b>"}  %read{2,2} %write{2147483647,-1}
+oparam	color	Color	0 0 0		%read{2147483647,-1} %write{0,0}
+oparam	float	Float	0		%read{2147483647,-1} %write{1,1}
+oparam	color	ColorAndFloat	0 0 0		%meta{string,label,"Float'n'Color"}  %read{2147483647,-1} %write{2,2}
+code ___main___
+	div		Color i_c_one i_c_two 	%filename{"Divide.osl"} %line{27} %argrw{"wrr"}
+	div		Float i_f_one i_f_two 	%line{28} %argrw{"wrr"}
+	div		ColorAndFloat i_c_one i_f_col 	%line{29} %argrw{"wrr"}
+	end

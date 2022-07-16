@@ -69,9 +69,9 @@ float getFresnel(normal i_normal, float i_ior)
 }
 
 // linearise 2.2 gamma 
-color linearize(color i_color)
+color linearize(color i_color, float gamma)
 {
-    color o_color = pow(i_color, 2.2);
+    color o_color = pow(i_color, gamma);
     return o_color;
 }
 
